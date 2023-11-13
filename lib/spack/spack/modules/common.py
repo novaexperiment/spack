@@ -34,6 +34,7 @@ import datetime
 import inspect
 import os
 import os.path
+import os
 import re
 import string
 from typing import List, Optional
@@ -960,6 +961,7 @@ class BaseModuleFileWriter:
         # Context key in modules.yaml
         conf_update = self.conf.context
         context.update(conf_update)
+        context["os"] = os
 
         context.update({"os": os})
         # Render the template
