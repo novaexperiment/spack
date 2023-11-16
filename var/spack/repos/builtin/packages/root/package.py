@@ -29,6 +29,7 @@ class Root(CMakePackage):
     # ###################### Versions ##########################
 
     # Master branch
+
     version("master", branch="master")
 
     # Development version (when more recent than production).
@@ -735,6 +736,8 @@ class Root(CMakePackage):
             # override with an empty value even though it may lead to link
             # warnings when building against ROOT
             env.unset("MACOSX_DEPLOYMENT_TARGET")
+        # Cleanup.
+        self.sanitize_environments(env)
 
     def setup_run_environment(self, env):
         env.set("ROOTSYS", self.prefix)
@@ -743,6 +746,8 @@ class Root(CMakePackage):
         # the following vars are copied from thisroot.sh; silence a cppyy warning
         env.set("CLING_STANDARD_PCH", "none")
         env.set("CPPYY_API_PATH", "none")
+        # Cleanup.
+        self.sanitize_environments(env)
 
     def setup_dependent_build_environment(
         self, env: spack.util.environment.EnvironmentModifications, dependent_spec
@@ -758,6 +763,8 @@ class Root(CMakePackage):
         if "platform=darwin" in self.spec:
             # Newer deployment targets cause fatal errors in rootcling
             env.unset("MACOSX_DEPLOYMENT_TARGET")
+        # Cleanup.
+        self.sanitize_environments(env)
 
     def setup_dependent_run_environment(
         self, env: spack.util.environment.EnvironmentModifications, dependent_spec
@@ -769,3 +776,28 @@ class Root(CMakePackage):
         env.prepend_path("ROOT_INCLUDE_PATH", dependent_spec.prefix.include)
         if "+rpath" not in self.spec:
             env.prepend_path("LD_LIBRARY_PATH", self.prefix.lib.root)
+        # Cleanup.
+        self.sanitize_environments(env)
+
+    def sanitize_environments(self, env: spack.util.environment.EnvironmentModifications, *vars):
+        target = self.spec.target
+        special_separators = {"LDSHARED": " -L"}
+        if not vars:
+            vars = (
+                "PATH",
+                "LDSHARED",
+                "LD_LIBRARY_PATH",
+                "DYLD_LIBRARY_PATH",
+                "LIBRARY_PATH",
+                "CMAKE_PREFIX_PATH",
+                "ROOT_INCLUDE_PATH",
+            )
+        for var in vars:
+            kwargs = {}
+            if var in special_separators:
+                kwargs["separator"] = special_separators[var]
+            env.prune_duplicate_paths(var, **kwargs)
+            if var == "PATH":
+                env.deprioritize_system_paths(var, target=target, **kwargs)
+            else:
+                env.remove_system_paths(var, **kwargs)
