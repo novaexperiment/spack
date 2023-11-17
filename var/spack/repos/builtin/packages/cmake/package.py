@@ -236,6 +236,7 @@ class Cmake(Package):
 
     with when("~ownlibs"):
         depends_on("expat")
+        depends_on("expat@2.5.0:", when="@3.27.0:")
         # expat/zlib are used in CMake/CTest, so why not require them in libarchive.
         for plat in ["darwin", "cray", "linux"]:
             with when("platform=%s" % plat):
