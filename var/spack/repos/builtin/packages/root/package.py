@@ -29,28 +29,30 @@ class Root(CMakePackage):
     # ###################### Versions ##########################
 
     # Master branch
-
     version("master", branch="master")
 
     # Development version (when more recent than production).
     version("develop", branch="master")
 
     # Production version
-    version("6.30.02", sha256="51a09c86ffa94089abac76daa3adc20812efc6c93b427697b843b12d73e145de")
+    version("6.30.02", sha256="7965a456d1ad1ee0d5fe4769bf5a8fec291af684ed93db0f3080a9c362435183")
     version("6.30.00", sha256="0592c066954cfed42312957c9cb251654456064fe2d8dabdcb8826f1c0099d71")
-    version("6.28.10", sha256="fc6a2d6c7cba853b0cfd6bd9514c90e9df50e1743899bc1db0472ee6f4e65a0a")
+    version("6.28.10", sha256="69d6fdeb607e6b20bd02c757fa6217024c0b6132c1e9b1dff4d85d9a2bb7e51e")
+    version("6.28.08", sha256="a3e64b4c01f87cd9bbe57e61ef96b41626e49b0446095070d41d9bfba3526862")
     version("6.28.06", sha256="af3b673b9aca393a5c9ae1bf86eab2672aaf1841b658c5c6e7a30ab93c586533")
     version("6.28.04", sha256="70f7f86a0cd5e3f2a0befdc59942dd50140d990ab264e8e56c7f17f6bfe9c965")
     version("6.28.02", sha256="6643c07710e68972b00227c68b20b1016fec16f3fba5f44a571fa1ce5bb42faa")
     version("6.28.00", sha256="afa1c5c06d0915411cb9492e474ea9ab12b09961a358e7e559013ed63b5d8084")
-    version("6.26.12", sha256="229daa0749e3e31b6e0dedc58b6838dbfc1180b4aba4741883b617b0b4fbc966")
+    version("6.26.14", sha256="81045a35a1958906c3eadecd9b01127a6087dadc19385af8e92ae5c84f06ce35")
     version("6.26.10", sha256="8e56bec397104017aa54f9eb554de7a1a134474fe0b3bb0f43a70fc4fabd625f")
     version("6.26.08", sha256="4dda043e7918b40743ad0299ddd8d526b7078f0a3822fd06066df948af47940e")
     version("6.26.06", sha256="b1f73c976a580a5c56c8c8a0152582a1dfc560b4dd80e1b7545237b65e6c89cb")
     version("6.26.04", sha256="a271cf82782d6ed2c87ea5eef6681803f2e69e17b3036df9d863636e9358421e")
     version("6.26.02", sha256="7ba96772271a726079506c5bf629c3ceb21bf0682567ed6145be30606d7cd9bb")
     version("6.26.00", sha256="5fb9be71fdf0c0b5e5951f89c2f03fcb5e74291d043f6240fb86f5ca977d4b31")
+    version("6.24.08", sha256="882c41fe36e94456fb10443d08ef9152375a90d1f910a10add1793d6e838bc44")
     version("6.24.06", sha256="907f69f4baca1e4f30eeb4979598ca7599b6aa803ca046e80e25b6bbaa0ef522")
+    version("6.24.04", sha256="4a416f3d7aa25dba46d05b641505eb074c5f07b3ec1d21911451046adaea3ee7")
     version("6.24.02", sha256="0507e1095e279ccc7240f651d25966024325179fa85a1259b694b56723ad7c1c")
     version("6.24.00", sha256="9da30548a289211c3122d47dacb07e85d35e61067fac2be6c5a5ff7bda979989")
     version("6.22.08", sha256="6f061ff6ef8f5ec218a12c4c9ea92665eea116b16e1cd4df4f96f00c078a2f6f")
