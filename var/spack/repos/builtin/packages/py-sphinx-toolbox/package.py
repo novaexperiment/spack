@@ -7,7 +7,7 @@ from spack.package import *
 
 
 class PySphinxToolbox(PythonPackage):
-    """Box of handy tools for Sphinx 🧰 📔"""
+    """Box of handy tools for Sphinx."""
 
     homepage = "https://github.com/sphinx-toolbox/sphinx-toolbox"
     pypi = "sphinx_toolbox/sphinx_toolbox-3.5.0.tar.gz"
