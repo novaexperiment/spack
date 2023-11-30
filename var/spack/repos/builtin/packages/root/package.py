@@ -113,7 +113,9 @@ class Root(CMakePackage):
         when="@6.26:6.26.06 +root7 ^nlohmann-json@3.11:",
     )
     # Support recent versions of protobuf with their own CMake config
-    patch("protobuf-config.patch", level=0, when="^protobuf")
+    # (provided the CMake being used supports targets), _cf_
+    # https://github.com/root-project/root/commit/f6cfe3bdab544e5f7fd49514562147ebd5d67d7c
+    patch("protobuf-config.patch", level=0, when="@:6.30.02 ^protobuf ^cmake@3.9:")
 
     patch("webgui.patch", level=0, when="@6.26.00:6.26.10,6.28.00:6.28.08,6.30.00 +webgui")
 
