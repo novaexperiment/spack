@@ -9,7 +9,7 @@ from spack.package import *
 
 class PyQuantumBlackbird(PythonPackage):
     """Blackbird is a quantum assembly language for continuous-variable quantum
-    computation, that can be used to program Xanadu___s quantum photonics
+    computation, that can be used to program Xanadu’s quantum photonics
     hardware and Strawberry Fields simulator.
     """
 

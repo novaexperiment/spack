@@ -9,7 +9,7 @@ from spack.package import *
 class Lcc(CMakePackage):
     """Los Alamos Crystal Cut (LCC) is a simple crystal builder. It is an easy-to-use
     and easy-to-develop code to make crystal solid/shape and slabs from a crystal
-    lattice. Provided you have a ___.pdb___ file containing your lattice basis you can
+    lattice. Provided you have a ‘.pdb‘ file containing your lattice basis you can
     create a solid or slab from command line."""
 
     homepage = "https://github.com/lanl/LCC.git"

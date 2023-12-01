@@ -7,7 +7,7 @@ from spack.package import *
 
 
 class PyDict2css(PythonPackage):
-    """A __-library for constructing cascading style sheets from Python dictionaries."""
+    """A μ-library for constructing cascading style sheets from Python dictionaries."""
 
     homepage = "https://github.com/sphinx-toolbox/dict2css"
     pypi = "dict2css/dict2css-0.3.0.tar.gz"
