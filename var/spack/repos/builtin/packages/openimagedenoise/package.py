@@ -9,7 +9,7 @@ from spack.package import *
 class Openimagedenoise(CMakePackage):
     """Intel Open Image Denoise is an open source library of high-performance,
     high-quality denoising filters for images rendered with ray tracing.
-    Open Image Denoise is part of the Intel__ oneAPI Rendering Toolkit and is released
+    Open Image Denoise is part of the Intel® oneAPI Rendering Toolkit and is released
     under the permissive Apache 2.0 license."""
 
     homepage = "https://www.openimagedenoise.org/"

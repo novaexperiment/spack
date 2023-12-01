@@ -7,7 +7,7 @@ from spack.package import *
 
 
 class Openvkl(CMakePackage):
-    """Intel__ Open Volume Kernel Library is a collection of high-performance volume
+    """Intel® Open Volume Kernel Library is a collection of high-performance volume
     computation kernels, developed at Intel."""
 
     homepage = "https://www.openvkl.org/"
