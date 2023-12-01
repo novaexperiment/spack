@@ -22,9 +22,9 @@ target_arch_list = (
 
 class Armcomputelibrary(SConsPackage):
     """The Arm Compute Library is a collection of low-level machine learning functions optimized
-    for Arm® Cortex®-A, Arm® Neoverse® and Arm® Mali™ GPUs architectures.
+    for Arm__ Cortex__-A, Arm__ Neoverse__ and Arm__ Mali___ GPUs architectures.
     The library provides superior performance to other open source alternatives and
-    immediate support for new Arm® technologies e.g. SVE2."""
+    immediate support for new Arm__ technologies e.g. SVE2."""
 
     homepage = "https://arm-software.github.io/ComputeLibrary/latest/"
     url = "https://github.com/ARM-software/ComputeLibrary/archive/refs/tags/v23.02.zip"
@@ -64,7 +64,7 @@ class Armcomputelibrary(SConsPackage):
     )
     variant("sve", default=False, description="Build for SVE.")
     variant("sve2", default=False, description="Build for SVE2.")
-    variant("neon", default=True, description="Enable Arm® Neon™ support")
+    variant("neon", default=True, description="Enable Arm__ Neon___ support")
     variant(
         "experimental_dynamic_fusion",
         default=False,

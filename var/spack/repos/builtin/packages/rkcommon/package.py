@@ -8,7 +8,7 @@ from spack.package import *
 
 class Rkcommon(CMakePackage):
     """This project represents a common set of C++ infrastructure and CMake utilities
-    used by various components of Intel® oneAPI Rendering Toolkit."""
+    used by various components of Intel__ oneAPI Rendering Toolkit."""
 
     homepage = "https://github.com/ospray/rkcommon"
     url = "https://github.com/ospray/rkcommon/archive/v1.4.1.tar.gz"

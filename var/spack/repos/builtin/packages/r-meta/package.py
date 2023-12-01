@@ -10,7 +10,7 @@ class RMeta(RPackage):
     """General Package for Meta-Analysis.
 
     User-friendly general package providing standard methods for meta-analysis
-    and supporting Schwarzer, Carpenter, and Rücker
+    and supporting Schwarzer, Carpenter, and R__cker
     <doi:10.1007/978-3-319-21416-0>, "Meta-Analysis with R" (2015): - common
     effect and random effects meta-analysis; - several plots (forest, funnel,
     Galbraith / radial, L'Abbe, Baujat, bubble); - three-level meta-analysis
