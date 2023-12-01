@@ -7,7 +7,7 @@ from spack.package import *
 
 
 class Ut(CMakePackage):
-    """UT: C++20 μ(micro)/Unit Testing Framework"""
+    """UT: C++20 __(micro)/Unit Testing Framework"""
 
     homepage = "https://boost-ext.github.io/ut"
     url = "https://github.com/boost-ext/ut/archive/v0.0.0.tar.gz"
