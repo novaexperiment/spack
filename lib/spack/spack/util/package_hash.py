@@ -338,8 +338,11 @@ def package_ast(spec, filter_multimethods=True, source=None):
 
     if source is None:
         filename = spack.repo.PATH.filename_for_package_name(spec.name)
-        with open(filename) as f:
-            source = f.read()
+        try:
+            with open(filename) as f:
+                source = f.read()
+        except UnicodeDecodeError as e:
+            raise PackageHashError(f"Unicode error in {filename}: {e}")
 
     # create an AST
     root = ast.parse(source)
