@@ -24,27 +24,12 @@ import spack.package_base
 import spack.spec
 import spack.store
 from spack.directives import build_system, depends_on, extends, maintainers
-from spack.error import NoHeadersError, NoLibrariesError, SpackError
+from spack.error import NoHeadersError, NoLibrariesError
 from spack.install_test import test_part
 from spack.spec import Spec
 from spack.util.prefix import Prefix
 
 from ._checks import BaseBuilder, execute_install_time_tests
-
-
-class UnknownFeatureError(SpackError):
-    """Raised if we specify any extra features not known to the package."""
-
-    def __init__(self, name, provided, selected):
-        super(UnknownFeatureError, self).__init__(
-            "selected features {sel} not known ({name} provides {prov})".format(
-                sel=str(selected), name=name, prov=str(provided)
-            )
-        )
-
-        self.name = name
-        self.provided = provided
-        self.selected = selected
 
 
 def _flatten_dict(dictionary: Mapping[str, object]) -> Iterable[str]:
@@ -322,10 +307,6 @@ class PythonPackage(PythonExtension):
     #: Callback names for install-time test
     install_time_test_callbacks = ["test"]
 
-    # Optional extra features provided by the Python package: see
-    # optional_extras()
-    provides_extras: List[str] = []
-
     build_system("python_pip")
 
     with spack.multimethod.when("build_system=python_pip"):
@@ -491,10 +472,6 @@ class PythonPipBuilder(BaseBuilder):
         """
         return []
 
-    def optional_extras(self, spec, prefix):
-        """Specify optional extra features to build"""
-        return []
-
     def install(self, pkg: PythonPackage, spec: Spec, prefix: Prefix) -> None:
         """Install everything from build directory."""
 
@@ -507,20 +484,10 @@ class PythonPipBuilder(BaseBuilder):
         for option in self.global_options(spec, prefix):
             args.append(f"--global-option={option}")
 
-        pip_project = (
-            self.stage.archive_file
-            if (self.stage.archive_file and self.stage.archive_file.endswith(".whl"))
-            else "."
-        )
-
-        extras = self.optional_extras(spec, prefix)
-        if extras:  # Verify and add to project specification
-            unknown_extras = [x for x in extras if x not in self.provides_extras]
-            if unknown_extras:
-                raise UnknownFeatureError(self.name, self.provides_extras, unknown_extras)
-            pip_project += "[{0}]".format(",".join(extras))
-
-        args.append(pip_project)
+        if pkg.stage.archive_file and pkg.stage.archive_file.endswith(".whl"):
+            args.append(pkg.stage.archive_file)
+        else:
+            args.append(".")
 
         pip = spec["python"].command
         # Hide user packages, since we don't have build isolation. This is

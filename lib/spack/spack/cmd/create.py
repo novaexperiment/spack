@@ -359,20 +359,7 @@ class PythonPackageTemplate(PackageTemplate):
         # FIXME: Add configuration settings to be passed to the build backend
         # FIXME: If not needed, delete this function
         settings = {}
-        return settings
-
-    def install_options(self, spec, prefix):
-        # FIXME: Add options to pass to setup.py install
-        # FIXME: If not needed, delete this function
-        options = []
-        return options
-
-    def optional_extras(self, spec, prefix):
-        # FIXME: Add extras to pass to pip install:
-        # FIXME:   pip install ... <path/wheel>[extra,...]
-        # FIXME: If not needed, delete this function.
-        extras = []
-        return extras"""
+        return settings"""
 
     def __init__(self, name, url, *args, **kwargs):
         # If the user provided `--name py-numpy`, don't rename it py-py-numpy
