@@ -231,8 +231,11 @@ class BinaryCacheIndex:
                 )
                 return
 
-            # All specs for which tarballs are available
-            spec_list = db.query_local(installed=False, in_buildcache=True)
+            spec_list = [
+                s
+                for s in db.query_local(installed=any, in_buildcache=any)
+                if s.external or db.query_local_by_spec_hash(s.dag_hash()).in_buildcache
+            ]
 
             # and externals.
             spec_list += [

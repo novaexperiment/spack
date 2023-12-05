@@ -2699,15 +2699,13 @@ class SpackSolverSetup:
             self.gen.fact(fn.pkg_fact(spec.name, fn.condition_trigger(condition_id, trigger_id)))
             self.gen.fact(fn.condition_reason(condition_id, f"{spec} requested from CLI"))
 
-            # Effect imposes the spec
             imposed_spec_key = str(spec), None
             cache = self._effect_cache[spec.name]
-            msg = (
-                "literal specs have different requirements. clear cache before computing literals"
-            )
-            assert imposed_spec_key not in cache, msg
-            effect_id = next(self._id_counter)
-            requirements = self.spec_clauses(spec)
+            if imposed_spec_key in cache:
+                effect_id, requirements = cache[imposed_spec_key]
+            else:
+                effect_id = next(self._id_counter)
+                requirements = self.spec_clauses(spec)
             root_name = spec.name
             for clause in requirements:
                 clause_name = clause.args[0]
@@ -3141,33 +3139,21 @@ def _develop_specs_from_env(spec, env):
     spec.constrain(dev_info["spec"])
 
 
-def _is_reusable_external(packages, spec):
-    pkg_cfg = packages.get(spec.name)
-    if not pkg_cfg:
-        return False
-    externals = pkg_cfg.get("externals")
-    if not externals:
-        return False
+def _is_reusable_external(packages, spec: spack.spec.Spec) -> bool:
+    """Returns true iff spec is an external that can be reused.
 
-    for entry in externals:
-        # Should satisify abstract Spec
-        if not spec.satisfies(spack.spec.Spec(entry["spec"])):
-            continue
-
-        # If a prefix is set, config should have the same.
-        if spec.external_modules:
-            prefix = entry.get("prefix")
+    Arguments:
+        packages: the packages configuration
+        spec: the spec to check
+    """
+    for name in {spec.name, *(p.name for p in spec.package.provided)}:
+        for entry in packages.get(name, {}).get("externals", []):
             if (
-                prefix is None
-                or spack.util.path.canonicalize_path(prefix) != spec.external_modules
+                spec.satisfies(entry["spec"])
+                and spec.external_path == entry.get("prefix")
+                and spec.external_modules == entry.get("modules")
             ):
-                continue
-
-        # If modules are specified, config should have them.
-        if spec.external_modules and not spec.external_modules == entry.get("modules"):
-            continue
-
-        return True
+                return True
 
     return False
 
@@ -3219,13 +3205,18 @@ class Solver:
 
             # Specs from buildcaches
             try:
+                # Specs in a build cache that depend on externals are reusable as long as local
+                # config has matching externals. This should guard against picking up binaries
+                # linked against externals not available locally, while still supporting the use
+                # case of distributing binaries across machines with similar externals.
                 packages = spack.config.get("packages")
-                index = [
-                    s
-                    for s in spack.binary_distribution.update_cache_and_get_specs()
-                    if not s.external or _is_reusable_external(packages, s)
-                ]
-                reusable_specs.extend(index)
+                reusable_specs.extend(
+                    [
+                        s
+                        for s in spack.binary_distribution.update_cache_and_get_specs()
+                        if not s.external or _is_reusable_external(packages, s)
+                    ]
+                )
             except (spack.binary_distribution.FetchCacheError, IndexError):
                 # this is raised when no mirrors had indices.
                 # TODO: update mirror configuration so it can indicate that the
