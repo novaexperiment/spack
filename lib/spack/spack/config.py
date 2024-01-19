@@ -160,6 +160,7 @@ class ConfigScope:
             else:
                 raise ConfigFileError(f"cannot write to '{filename}'") from e
 
+
     def clear(self):
         """Empty cached config information."""
         self.sections = syaml.syaml_dict()
@@ -288,7 +289,11 @@ class SingleFileScope(ConfigScope):
             rename(tmp, self.path)
 
         except (syaml.SpackYAMLError, IOError) as e:
-            raise ConfigFileError(f"cannot write to config file {str(e)}") from e
+            if hasattr(e, 'errno') and e.errno in [13, 30]:
+                tty.warn("Ignoring write error on readonly %s" % filename)
+            else:
+                raise ConfigFileError(f"cannot write to '{filename}'") from e
+
 
     def __repr__(self):
         return "<SingleFileScope: %s: %s>" % (self.name, self.path)
