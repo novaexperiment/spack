@@ -33,9 +33,9 @@ Action = setup
     prodDir()
     setupEnv()
 {% for package in spec._dependencies.keys() %}
-   {% if spec[package].prefix.startswith(install_root) %}
-    setupRequired({{package|replace("-","_")}} {{spec[package].version}} -f ${UPS_PROD_FLAVOR} -q "${UPS_PROD_QUALIFIERS}")
-   {% endif %}
+  {% if spec[package].prefix.startswith(install_root) %}
+    setupOptional({{package|replace("-","_")}} {{spec[package].version}} -f ${UPS_PROD_FLAVOR} -q "${UPS_PROD_QUALIFIERS}")
+  {% endif %}
 {% endfor %}
 
 {% block environment %}
