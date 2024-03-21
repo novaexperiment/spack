@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -7,25 +7,41 @@ from spack.package import *
 
 
 class PerlSerealDecoder(PerlPackage):
-    """Fast, compact, powerful binary deserialization."""  # AUTO-CPAN2Spack
+    """Fast, compact, powerful binary deserialization"""
 
-    homepage = "https://cpan.metacpan.org/authors/id/Y/YV/YVES"  # AUTO-CPAN2Spack
-    url = "https://cpan.metacpan.org/authors/id/Y/YV/YVES/Sereal-Decoder-4.025.tar.gz"
+    homepage = "https://metacpan.org/pod/Sereal::Decoder"
+    url = "https://cpan.metacpan.org/authors/id/Y/YV/YVES/Sereal-Decoder-5.004.tar.gz"
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("greenc-FNAL", "EbiArnie", "gartung", "marcmengel", "vito")
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later")
+
+    version("5.004", sha256="68ef0314d87d1a6e60bb0f66fcf43eb2cacdeb1754432f5e25e784e39d3e6784")
     version("5.001", sha256="b27c33ec910de57d72817cc2baa0bf039d5e647a7359edfcf1cf7d5efeeed9b2")
     version("5.000_002", sha256="abe866ec8480a364745d00b8980d8f866dd0edd1420102e9e5ed82e932269507")
     version("4.025", sha256="8e0e3b9a9af1a778b7de21506fa30797fb1b520dcd002f3f29e6dcb52446dea5")
 
-    provides("perl-sereal-decoder-constants")  # AUTO-CPAN2Spack
-    provides("perl-sereal-performance")  # AUTO-CPAN2Spack
-    depends_on("perl-extutils-parsexs@2.21:", type="build")  # AUTO-CPAN2Spack
-    depends_on("perl-extutils-makemaker@7.0:", type="build")  # AUTO-CPAN2Spack
-    depends_on("perl-test-longstring", type=("build", "test"))  # AUTO-CPAN2Spack
-    depends_on("perl-test-differences", type=("build", "test"))  # AUTO-CPAN2Spack
-    depends_on("perl-test-deep", type=("build", "test"))  # AUTO-CPAN2Spack
-    depends_on("perl@5.8:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-test-warn", type=("build", "test"))  # AUTO-CPAN2Spack
-    depends_on("perl-scalar-util", type=("build", "test"))  # AUTO-CPAN2Spack
-    depends_on("perl-data-dumper", type=("build", "test"))  # AUTO-CPAN2Spack
+    provides("perl-sereal-decoder-constants")
+    provides("perl-sereal-performance")
+
+    depends_on("perl@5.8:", type=("build", "link", "run", "test"))
+
+    depends_on("perl-devel-checklib@1.16:", when="@5.004:", type=("build"))
+    depends_on("perl-extutils-parsexs@2.21:", when="@:5.001", type=("build"))
+    depends_on("perl-extutils-makemaker@7.0:", when="@:5.001", type=("build"))
+
+    depends_on("perl-test-longstring", type=("build", "test"))
+    depends_on("perl-test-differences", type=("build", "test"))
+    depends_on("perl-test-deep", type=("build", "test"))
+    depends_on("perl-test-warn", type=("build", "test"))
+    depends_on("perl-scalar-util", type=("build", "test"))
+    depends_on("perl-data-dumper", type=("build", "test"))
+    depends_on("zstd", type=("build", "link", "run", "test"))
+
+    def setup_build_environment(self, env):
+        # These are not currently available in Spack
+        env.set("SEREAL_USE_BUNDLED_CSNAPPY", "1")
+        env.set("SEREAL_USE_BUNDLED_MINIZ", "1")
+        env.set("USE_UNALIGNED", "1")
+        env.set("NO_ASM", "0")
+        env.set("ZSTD_DISABLE_ASM", "0")

@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -30,6 +30,6 @@ class PerlTimePiece(PerlPackage):
         url="https://cpan.metacpan.org/authors/id/E/ES/ESAYM/Time-Piece-1.3203.tar.gz",
     )
 
-    provides("perl-time-seconds")  # AUTO-CPAN2Spack
-    depends_on("perl-extutils-makemaker", type="build")  # AUTO-CPAN2Spack
-    depends_on("perl-scalar-util", type="run")  # AUTO-CPAN2Spack
+    provides("perl-time-seconds")
+    depends_on("perl-extutils-makemaker", type="build")
+    depends_on("perl-scalar-util", type="run")

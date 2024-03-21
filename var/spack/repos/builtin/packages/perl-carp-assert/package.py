@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -12,7 +12,9 @@ class PerlCarpAssert(PerlPackage):
     homepage = "https://metacpan.org/pod/Carp::Assert"
     url = "https://cpan.metacpan.org/authors/id/Y/YV/YVES/Carp-Assert-0.22.tar.gz"
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    license("GPL-1.0-or-later OR Artistic-1.0-Perl")
+
+    maintainers("greenc-FNAL", "gartung", "marcmengel", "vitodb")
 
     version("0.22", sha256="807ea97c6bed76ac2e4969efba7dae48fefeb9f28797f112671b3ac8a49355f7")
     version(

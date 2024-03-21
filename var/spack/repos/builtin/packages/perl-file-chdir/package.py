@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -19,6 +19,8 @@ class PerlFileChdir(PerlPackage):
 
     homepage = "https://metacpan.org/pod/File::chdir"
     url = "https://cpan.metacpan.org/authors/id/D/DA/DAGOLDEN/File-chdir-0.1011.tar.gz"
+
+    license("GPL-1.0-or-later OR Artistic-1.0-Perl")
 
     version(
         "0.10.11",

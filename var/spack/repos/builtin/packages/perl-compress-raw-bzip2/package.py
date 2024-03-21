@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -11,6 +11,8 @@ class PerlCompressRawBzip2(PerlPackage):
 
     homepage = "https://metacpan.org/pod/Compress::Raw::Bzip2"
     url = "https://cpan.metacpan.org/authors/id/P/PM/PMQS/Compress-Raw-Bzip2-2.081.tar.gz"
+
+    license("GPL-1.0-or-later OR Artistic-1.0-Perl")
 
     version("2.204", sha256="ee7b490e67e7e2a7a0e8c1e1aa29a9610066149f46b836921149ad1813f70c69")
     version("2.201", sha256="6204b270806d924e124e406faf6bbc715f7bb461dfdbea722042325633be300a")
@@ -33,4 +35,4 @@ class PerlCompressRawBzip2(PerlPackage):
     version("2.081", sha256="8692b5c9db91954408e24e805fbfda222879da80d89d9410791421e3e5bc3520")
 
     depends_on("bzip2")
-    depends_on("perl-extutils-makemaker", type="build")  # AUTO-CPAN2Spack
+    depends_on("perl-extutils-makemaker", type="build")

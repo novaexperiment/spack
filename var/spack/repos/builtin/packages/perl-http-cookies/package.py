@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -12,6 +12,8 @@ class PerlHttpCookies(PerlPackage):
     homepage = "https://metacpan.org/pod/HTTP::Cookies"
     url = "https://cpan.metacpan.org/authors/id/O/OA/OALDERS/HTTP-Cookies-6.04.tar.gz"
 
+    license("GPL-1.0-or-later OR Artistic-1.0-Perl")
+
     version("6.10", sha256="e36f36633c5ce6b5e4b876ffcf74787cc5efe0736dd7f487bdd73c14f0bd7007")
     version("6.09", sha256="903f017afaa5b78599cc90efc14ecccc8cc2ebfb636eb8c02f8f16ba861d1fe0")
     version("6.08", sha256="49ebb73576eb41063c04bc079477df094496deec805ae033f3be338c23c3af59")
@@ -20,12 +22,12 @@ class PerlHttpCookies(PerlPackage):
     version("6.05", sha256="58e1cd041bfcf33c2ab4140de7a757234809b8cf072afa727a6f3ffe84b66f5d")
     version("6.04", sha256="0cc7f079079dcad8293fea36875ef58dd1bfd75ce1a6c244cd73ed9523eb13d4")
 
-    provides("perl-http-cookies-microsoft")  # AUTO-CPAN2Spack
-    provides("perl-http-cookies-netscape")  # AUTO-CPAN2Spack
-    depends_on("perl-uri", type=("build", "test"))  # AUTO-CPAN2Spack
-    depends_on("perl-http-response", type=("build", "test"))  # AUTO-CPAN2Spack
-    depends_on("perl@5.8.1:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-http-headers-util@6:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-extutils-makemaker", type=("build", "test"))  # AUTO-CPAN2Spack
-    depends_on("perl-http-date@6:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-http-request", type="run")  # AUTO-CPAN2Spack
+    provides("perl-http-cookies-microsoft")
+    provides("perl-http-cookies-netscape")
+    depends_on("perl-uri", type=("build", "test"))
+    depends_on("perl-http-response", type=("build", "test"))
+    depends_on("perl@5.8.1:", type="run")
+    depends_on("perl-http-headers-util@6:", type="run")
+    depends_on("perl-extutils-makemaker", type=("build", "test"))
+    depends_on("perl-http-date@6:", type="run")
+    depends_on("perl-http-request", type="run")

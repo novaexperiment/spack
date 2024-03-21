@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -14,6 +14,8 @@ class PerlLibwwwPerl(PerlPackage):
 
     homepage = "https://github.com/libwww-perl/libwww-perl"
     url = "https://cpan.metacpan.org/authors/id/O/OA/OALDERS/libwww-perl-6.33.tar.gz"
+
+    license("Artistic-1.0")
 
     version("6.68", sha256="42784a5869855ee08522dfb1d30fccf98ca4ddefa8c6c1bcb0d68a0adceb7f01")
     version("6.67", sha256="96eec40a3fd0aa1bd834117be5eb21c438f73094d861a1a7e5774f0b1226b723")

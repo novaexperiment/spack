@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -12,6 +12,8 @@ class PyPytz(PythonPackage):
     homepage = "https://pythonhosted.org/pytz"
     pypi = "pytz/pytz-2019.3.tar.gz"
     git = "https://github.com/stub42/pytz.git"
+
+    license("MIT")
 
     version("2023.3", sha256="1d8ce29db189191fb55338ee6d0387d82ab59f3d00eac103412d64e0ebd0c588")
     version("2022.7.1", sha256="01a0681c4b9684a28304615eba55d1ab31ae00bf68ec157ec3708a8182dbbcd0")

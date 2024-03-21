@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -14,6 +14,6 @@ class PerlHttpNegotiate(PerlPackage):
 
     version("6.01", sha256="1c729c1ea63100e878405cda7d66f9adfd3ed4f1d6cacaca0ee9152df728e016")
 
-    depends_on("perl@5.8.1:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-extutils-makemaker", type="build")  # AUTO-CPAN2Spack
-    depends_on("perl-http-headers@6:", type="run")  # AUTO-CPAN2Spack
+    depends_on("perl@5.8.1:", type="run")
+    depends_on("perl-extutils-makemaker", type="build")
+    depends_on("perl-http-headers@6:", type="run")

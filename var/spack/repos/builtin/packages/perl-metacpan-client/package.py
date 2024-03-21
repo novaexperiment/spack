@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -7,13 +7,20 @@ from spack.package import *
 
 
 class PerlMetacpanClient(PerlPackage):
-    """A comprehensive, DWIM-featured client to the MetaCPAN API."""  # AUTO-CPAN2Spack
+    """A comprehensive, DWIM-featured client to the MetaCPAN API"""
 
-    homepage = "https://cpan.metacpan.org/authors/id/M/MI/MICKEY"  # AUTO-CPAN2Spack
-    url = "https://cpan.metacpan.org/authors/id/M/MI/MICKEY/MetaCPAN-Client-2.030000.tar.gz"
+    homepage = "https://metacpan.org/pod/MetaCPAN::Client"
+    url = "https://cpan.metacpan.org/authors/id/M/MI/MICKEY/MetaCPAN-Client-2.031000.tar.gz"
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("greenc-FNAL", "EbiArnie", "gartung", "marcmengel", "vito")
 
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later")
+
+    version(
+        "2.031.000",
+        sha256="c6ceaf886a74120e2bffe2ec1f09d0fdc330acbfdb9ec876ef925ee687ec7cf5",
+        url="https://cpan.metacpan.org/authors/id/M/MI/MICKEY/MetaCPAN-Client-2.031000.tar.gz",
+    )
     version(
         "2.030.000",
         sha256="d9b765c5237754f17262696382a7385d90b2d01986979817862b1664b06dd3af",
@@ -25,40 +32,42 @@ class PerlMetacpanClient(PerlPackage):
         url="https://cpan.metacpan.org/authors/id/M/MI/MICKEY/MetaCPAN-Client-2.029000.tar.gz",
     )
 
-    provides("perl-metacpan-client-author")  # AUTO-CPAN2Spack
-    provides("perl-metacpan-client-cover")  # AUTO-CPAN2Spack
-    provides("perl-metacpan-client-distribution")  # AUTO-CPAN2Spack
-    provides("perl-metacpan-client-downloadurl")  # AUTO-CPAN2Spack
-    provides("perl-metacpan-client-favorite")  # AUTO-CPAN2Spack
-    provides("perl-metacpan-client-file")  # AUTO-CPAN2Spack
-    provides("perl-metacpan-client-mirror")  # AUTO-CPAN2Spack
-    provides("perl-metacpan-client-module")  # AUTO-CPAN2Spack
-    provides("perl-metacpan-client-package")  # AUTO-CPAN2Spack
-    provides("perl-metacpan-client-permission")  # AUTO-CPAN2Spack
-    provides("perl-metacpan-client-pod")  # AUTO-CPAN2Spack
-    provides("perl-metacpan-client-rating")  # AUTO-CPAN2Spack
-    provides("perl-metacpan-client-release")  # AUTO-CPAN2Spack
-    provides("perl-metacpan-client-request")  # AUTO-CPAN2Spack
-    provides("perl-metacpan-client-resultset")  # AUTO-CPAN2Spack
-    provides("perl-metacpan-client-role-entity")  # AUTO-CPAN2Spack
-    provides("perl-metacpan-client-role-hasua")  # AUTO-CPAN2Spack
-    provides("perl-metacpan-client-scroll")  # AUTO-CPAN2Spack
-    provides("perl-metacpan-client-types")  # AUTO-CPAN2Spack
-    depends_on("perl-extutils-makemaker", type="test")  # AUTO-CPAN2Spack
-    depends_on("perl-extutils-makemaker@7.11_1:", type="build")  # AUTO-CPAN2Spack
-    depends_on("perl-http-tiny-mech@1.1.2:", type="test")  # AUTO-CPAN2Spack
-    depends_on("perl-http-tiny@0.56:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-io-socket-ssl@1.42:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-json-maybexs", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-lwp-protocol-https", type="test")  # AUTO-CPAN2Spack
-    depends_on("perl-moo", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-moo-role", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-net-ssleay@1.49:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-ref-util", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-safe-isa", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-test-fatal", type="test")  # AUTO-CPAN2Spack
-    depends_on("perl-test-needs@0.2.5:", type="test")  # AUTO-CPAN2Spack
-    depends_on("perl-type-tiny", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-uri-escape", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-www-mechanize-cached@1.54:", type="test")  # AUTO-CPAN2Spack
-    depends_on("perl@5.10:", type="run")  # AUTO-CPAN2Spack
+    provides("perl-metacpan-client-author")
+    provides("perl-metacpan-client-cover")
+    provides("perl-metacpan-client-distribution")
+    provides("perl-metacpan-client-downloadurl")
+    provides("perl-metacpan-client-favorite")
+    provides("perl-metacpan-client-file")
+    provides("perl-metacpan-client-mirror")
+    provides("perl-metacpan-client-module")
+    provides("perl-metacpan-client-package")
+    provides("perl-metacpan-client-permission")
+    provides("perl-metacpan-client-pod")
+    provides("perl-metacpan-client-rating")
+    provides("perl-metacpan-client-release")
+    provides("perl-metacpan-client-request")
+    provides("perl-metacpan-client-resultset")
+    provides("perl-metacpan-client-role-entity")
+    provides("perl-metacpan-client-role-hasua")
+    provides("perl-metacpan-client-scroll")
+    provides("perl-metacpan-client-types")
+
+    depends_on("perl@5.10.0:", type=("build", "link", "run", "test"))
+    depends_on("perl-extutils-makemaker", type="test")
+    depends_on("perl-extutils-makemaker@7.11_1:", type="build")
+
+    depends_on("perl-http-tiny-mech@1.1.2:", type=("build", "test"))
+    depends_on("perl-http-tiny@0.56:", type=("build", "run", "test"))
+    depends_on("perl-io-socket-ssl@1.42:", type=("build", "run", "test"))
+    depends_on("perl-json-maybexs", type=("build", "run", "test"))
+    depends_on("perl-lwp-protocol-https", type=("build", "test"))
+    depends_on("perl-moo", type=("build", "run", "test"))
+    depends_on("perl-moo-role", type=("build", "run", "test"))
+    depends_on("perl-net-ssleay@1.49:", type=("build", "run", "test"))
+    depends_on("perl-ref-util", type=("build", "run", "test"))
+    depends_on("perl-safe-isa", type=("build", "run", "test"))
+    depends_on("perl-test-fatal", type=("build", "test"))
+    depends_on("perl-test-needs@0.2.5:", type=("build", "test"))
+    depends_on("perl-type-tiny", type=("build", "run", "test"))
+    depends_on("perl-uri-escape", type=("build", "run", "test"))
+    depends_on("perl-www-mechanize-cached@1.54:", type=("build", "test"))

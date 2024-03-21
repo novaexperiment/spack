@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -8,12 +8,14 @@ from spack.package import *
 
 
 class PerlRoleTiny(PerlPackage):
-    """Roles: a nouvelle cuisine portion size slice of Moose."""  # AUTO-CPAN2Spack
+    """Roles: a nouvelle cuisine portion size slice of Moose."""
 
-    homepage = "https://cpan.metacpan.org/authors/id/H/HA/HAARG"  # AUTO-CPAN2Spack
+    homepage = "https://cpan.metacpan.org/authors/id/H/HA/HAARG"
     url = "https://cpan.metacpan.org/authors/id/H/HA/HAARG/Role-Tiny-2.002004.tar.gz"
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("greenc-FNAL", "gartung", "marcmengel", "vitodb")
+
+    license("GPL-1.0-or-later OR Artistic-1.0-Perl")
 
     version(
         "2.002.004",
@@ -26,8 +28,8 @@ class PerlRoleTiny(PerlPackage):
         url="https://cpan.metacpan.org/authors/id/H/HA/HAARG/Role-Tiny-2.002003.tar.gz",
     )
 
-    provides("perl-role-tiny-with")  # AUTO-CPAN2Spack
+    provides("perl-role-tiny-with")
 
     depends_on("perl-exporter-tiny", type=("build", "run"))
-    depends_on("perl@5.6:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-class-method-modifiers@1.5:", type="run")  # AUTO-CPAN2Spack
+    depends_on("perl@5.6:", type="run")
+    depends_on("perl-class-method-modifiers@1.5:", type="run")

@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -60,8 +60,34 @@ class Berkeleygw(MakefilePackage):
     depends_on("hdf5+fortran+hl+mpi", when="+hdf5+mpi")
     depends_on("elpa+openmp", when="+elpa+openmp")
     depends_on("elpa~openmp", when="+elpa~openmp")
-    depends_on("fftw-api@3+openmp", when="+openmp")
-    depends_on("fftw-api@3~openmp", when="~openmp")
+
+    depends_on("fftw-api@3")
+    with when("+openmp"):
+        depends_on("acfl threads=openmp", when="^[virtuals=fftw-api] acfl")
+        depends_on("amdfftw+openmp", when="^[virtuals=fftw-api] amdfftw")
+        depends_on("armpl-gcc threads=openmp", when="^[virtuals=fftw-api] armpl-gcc")
+        depends_on("cray-fftw+openmp", when="^[virtuals=fftw-api] cray-fftw")
+        depends_on("fftw+openmp", when="^[virtuals=fftw-api] fftw")
+        depends_on("fujitsu-fftw+openmp", when="^[virtuals=fftw-api] fujitsu-fftw")
+        depends_on("intel-mkl threads=openmp", when="^[virtuals=fftw-api] intel-mkl")
+        depends_on("intel-oneapi-mkl threads=openmp", when="^[virtuals=fftw-api] intel-oneapi-mkl")
+        depends_on(
+            "intel-parallel-studio threads=openmp",
+            when="^[virtuals=fftw-api] intel-parallel-studio",
+        )
+
+    with when("~openmp"):
+        depends_on("acfl threads=none", when="^[virtuals=fftw-api] acfl")
+        depends_on("amdfftw~openmp", when="^[virtuals=fftw-api] amdfftw")
+        depends_on("armpl-gcc threads=none", when="^[virtuals=fftw-api] armpl-gcc")
+        depends_on("cray-fftw~openmp", when="^[virtuals=fftw-api] cray-fftw")
+        depends_on("fftw~openmp", when="^[virtuals=fftw-api] fftw")
+        depends_on("fujitsu-fftw~openmp", when="^[virtuals=fftw-api] fujitsu-fftw")
+        depends_on("intel-mkl threads=none", when="^[virtuals=fftw-api] intel-mkl")
+        depends_on("intel-oneapi-mkl threads=none", when="^[virtuals=fftw-api] intel-oneapi-mkl")
+        depends_on(
+            "intel-parallel-studio threads=none", when="^[virtuals=fftw-api] intel-parallel-studio"
+        )
 
     # in order to run the installed python scripts
     depends_on("python", type=("build", "run"), when="+python")
@@ -75,10 +101,8 @@ class Berkeleygw(MakefilePackage):
 
     # Force openmp propagation on some providers of blas / fftw-api
     with when("+openmp"):
-        depends_on("fftw+openmp", when="^fftw")
-        depends_on("amdfftw+openmp", when="^amdfftw")
-        depends_on("openblas threads=openmp", when="^openblas")
-        depends_on("amdblis threads=openmp", when="^amdblis")
+        depends_on("openblas threads=openmp", when="^[virtuals=blas] openblas")
+        depends_on("amdblis threads=openmp", when="^[virtuals=blas] amdblis")
 
     parallel = False
 

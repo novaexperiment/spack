@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -7,12 +7,14 @@ from spack.package import *
 
 
 class PerlStrictures(PerlPackage):
-    """Turn on strict and make most warnings fatal."""  # AUTO-CPAN2Spack
+    """Turn on strict and make most warnings fatal"""
 
-    homepage = "https://cpan.metacpan.org/authors/id/H/HA/HAARG"  # AUTO-CPAN2Spack
+    homepage = "https://metacpan.org/pod/strictures"
     url = "https://cpan.metacpan.org/authors/id/H/HA/HAARG/strictures-2.000006.tar.gz"
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("greenc-FNAL", "EbiArnie", "gartung", "marcmengel", "vito")
+
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later")
 
     version(
         "2.000.006",
@@ -25,5 +27,6 @@ class PerlStrictures(PerlPackage):
         url="https://cpan.metacpan.org/authors/id/H/HA/HAARG/strictures-2.000004.tar.gz",
     )
 
-    provides("perl-strictures-extra")  # AUTO-CPAN2Spack
-    depends_on("perl@5.6:", type="run")  # AUTO-CPAN2Spack
+    provides("perl-strictures-extra")
+
+    depends_on("perl@5.6:", type=("build", "run", "test"))

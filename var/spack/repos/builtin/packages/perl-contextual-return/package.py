@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -11,6 +11,10 @@ class PerlContextualReturn(PerlPackage):
 
     homepage = "https://metacpan.org/pod/Contextual::Return"
     url = "https://cpan.metacpan.org/authors/id/D/DC/DCONWAY/Contextual-Return-0.004014.tar.gz"
+
+    license("GPL-1.0-or-later OR Artistic-1.0-Perl")
+
+    maintainers("greenc-FNAL", "EbiArnie", "gartung", "marcmengel", "vitodb")
 
     version(
         "0.004.014",

@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -11,6 +11,8 @@ class Gloo(CMakePackage, CudaPackage):
 
     homepage = "https://github.com/facebookincubator/gloo"
     git = "https://github.com/facebookincubator/gloo.git"
+
+    license("BSD-3-Clause")
 
     version("master", branch="master")
     version("2023-05-19", commit="597accfd79f5b0f9d57b228dec088ca996686475")  # py-torch@2.1:
@@ -46,11 +48,11 @@ class Gloo(CMakePackage, CudaPackage):
     depends_on("cmake@2.8.12:", type="build")
 
     def patch(self):
-        with(when("@2023-05-18")):
+        with when("@2023-05-18"):
             filter_file(
-               "#include <ifaddrs.h>",
-               "#include <array>\n#include <ifaddrs.h>",
-               "gloo/transport/tcp/device.cc",
+                "#include <ifaddrs.h>",
+                "#include <array>\n#include <ifaddrs.h>",
+                "gloo/transport/tcp/device.cc",
             )
 
     def cmake_args(self):

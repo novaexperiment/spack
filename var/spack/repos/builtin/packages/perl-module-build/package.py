@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -17,6 +17,8 @@ class PerlModuleBuild(PerlPackage):
 
     homepage = "https://metacpan.org/pod/Module::Build"
     url = "https://cpan.metacpan.org/authors/id/L/LE/LEONT/Module-Build-0.4224.tar.gz"
+
+    license("GPL-1.0-or-later OR Artistic-1.0-Perl")
 
     version(
         "0.42.32",
@@ -45,32 +47,32 @@ class PerlModuleBuild(PerlPackage):
         url="https://cpan.metacpan.org/authors/id/L/LE/LEONT/Module-Build-0.4220.tar.gz",
     )
 
-    provides("perl-module-build-base")  # AUTO-CPAN2Spack
-    provides("perl-module-build-compat")  # AUTO-CPAN2Spack
-    provides("perl-module-build-config")  # AUTO-CPAN2Spack
-    provides("perl-module-build-cookbook")  # AUTO-CPAN2Spack
-    provides("perl-module-build-dumper")  # AUTO-CPAN2Spack
-    provides("perl-module-build-notes")  # AUTO-CPAN2Spack
-    provides("perl-module-build-ppmmaker")  # AUTO-CPAN2Spack
-    provides("perl-module-build-platform-default")  # AUTO-CPAN2Spack
-    provides("perl-module-build-platform-macos")  # AUTO-CPAN2Spack
-    provides("perl-module-build-platform-unix")  # AUTO-CPAN2Spack
-    provides("perl-module-build-platform-vms")  # AUTO-CPAN2Spack
-    provides("perl-module-build-platform-vos")  # AUTO-CPAN2Spack
-    provides("perl-module-build-platform-windows")  # AUTO-CPAN2Spack
-    provides("perl-module-build-platform-aix")  # AUTO-CPAN2Spack
-    provides("perl-module-build-platform-cygwin")  # AUTO-CPAN2Spack
-    provides("perl-module-build-platform-darwin")  # AUTO-CPAN2Spack
-    provides("perl-module-build-platform-os2")  # AUTO-CPAN2Spack
-    provides("perl-module-build-podparser")  # AUTO-CPAN2Spack
-    depends_on("perl-extutils-parsexs@2.21:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-text-abbrev", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-tap-harness@3.29:", type=("build", "run", "test"))  # AUTO-CPAN2Spack
-    depends_on("perl-perl-ostype@1:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-extutils-mkbootstrap", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl@5.6.1:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-extutils-cbuilder@0.27:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-extutils-manifest@1.54:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-module-metadata@1.0.2:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-cpan-meta-yaml@0.3:", type=("build", "test"))  # AUTO-CPAN2Spack
-    depends_on("perl-data-dumper", type="run")  # AUTO-CPAN2Spack
+    provides("perl-module-build-base")
+    provides("perl-module-build-compat")
+    provides("perl-module-build-config")
+    provides("perl-module-build-cookbook")
+    provides("perl-module-build-dumper")
+    provides("perl-module-build-notes")
+    provides("perl-module-build-ppmmaker")
+    provides("perl-module-build-platform-default")
+    provides("perl-module-build-platform-macos")
+    provides("perl-module-build-platform-unix")
+    provides("perl-module-build-platform-vms")
+    provides("perl-module-build-platform-vos")
+    provides("perl-module-build-platform-windows")
+    provides("perl-module-build-platform-aix")
+    provides("perl-module-build-platform-cygwin")
+    provides("perl-module-build-platform-darwin")
+    provides("perl-module-build-platform-os2")
+    provides("perl-module-build-podparser")
+    depends_on("perl-extutils-parsexs@2.21:", type="run")
+    depends_on("perl-text-abbrev", type="run")
+    depends_on("perl-tap-harness@3.29:", type=("build", "run", "test"))
+    depends_on("perl-perl-ostype@1:", type="run")
+    depends_on("perl-extutils-mkbootstrap", type="run")
+    depends_on("perl@5.6.1:", type="run")
+    depends_on("perl-extutils-cbuilder@0.27:", type="run")
+    depends_on("perl-extutils-manifest@1.54:", type="run")
+    depends_on("perl-module-metadata@1.0.2:", type="run")
+    depends_on("perl-cpan-meta-yaml@0.3:", type=("build", "test"))
+    depends_on("perl-data-dumper", type="run")

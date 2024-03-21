@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -37,38 +37,38 @@ class PerlIoCompress(PerlPackage):
     version("2.083", sha256="43be5ff880d2f27d7320f156cce9774d446f14a33d9afd57892b81e17657e4cc")
     version("2.081", sha256="5211c775544dc8c511af08edfb1c0c22734daa2789149c2a88d68e17b43546d9")
 
-    provides("perl-compress-zlib")  # AUTO-CPAN2Spack
-    provides("perl-file-globmapper@1.001")  # AUTO-CPAN2Spack
-    provides("perl-io-compress-adapter-bzip2")  # AUTO-CPAN2Spack
-    provides("perl-io-compress-adapter-deflate")  # AUTO-CPAN2Spack
-    provides("perl-io-compress-adapter-identity")  # AUTO-CPAN2Spack
-    provides("perl-io-compress-base")  # AUTO-CPAN2Spack
-    provides("perl-io-compress-base-common")  # AUTO-CPAN2Spack
-    provides("perl-io-compress-bzip2")  # AUTO-CPAN2Spack
-    provides("perl-io-compress-deflate")  # AUTO-CPAN2Spack
-    provides("perl-io-compress-gzip")  # AUTO-CPAN2Spack
-    provides("perl-io-compress-gzip-constants")  # AUTO-CPAN2Spack
-    provides("perl-io-compress-rawdeflate")  # AUTO-CPAN2Spack
-    provides("perl-io-compress-zip")  # AUTO-CPAN2Spack
-    provides("perl-io-compress-zip-constants")  # AUTO-CPAN2Spack
-    provides("perl-io-compress-zlib-constants")  # AUTO-CPAN2Spack
-    provides("perl-io-compress-zlib-extra")  # AUTO-CPAN2Spack
-    provides("perl-io-uncompress-adapter-bunzip2")  # AUTO-CPAN2Spack
-    provides("perl-io-uncompress-adapter-identity")  # AUTO-CPAN2Spack
-    provides("perl-io-uncompress-adapter-inflate")  # AUTO-CPAN2Spack
-    provides("perl-io-uncompress-anyinflate")  # AUTO-CPAN2Spack
-    provides("perl-io-uncompress-anyuncompress")  # AUTO-CPAN2Spack
-    provides("perl-io-uncompress-base")  # AUTO-CPAN2Spack
-    provides("perl-io-uncompress-bunzip2")  # AUTO-CPAN2Spack
-    provides("perl-io-uncompress-gunzip")  # AUTO-CPAN2Spack
-    provides("perl-io-uncompress-inflate")  # AUTO-CPAN2Spack
-    provides("perl-io-uncompress-rawinflate")  # AUTO-CPAN2Spack
-    provides("perl-io-uncompress-unzip")  # AUTO-CPAN2Spack
-    provides("perl-u64")  # AUTO-CPAN2Spack
-    provides("perl-zlib-olddeflate")  # AUTO-CPAN2Spack
-    provides("perl-zlib-oldinflate")  # AUTO-CPAN2Spack
-    depends_on("perl-compress-raw-bzip2@2.201:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-extutils-makemaker", type="build")  # AUTO-CPAN2Spack
-    depends_on("perl-scalar-util", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-time-local", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-compress-raw-zlib@2.201:", type="run")  # AUTO-CPAN2Spack
+    provides("perl-compress-zlib")
+    provides("perl-file-globmapper@1.001")
+    provides("perl-io-compress-adapter-bzip2")
+    provides("perl-io-compress-adapter-deflate")
+    provides("perl-io-compress-adapter-identity")
+    provides("perl-io-compress-base")
+    provides("perl-io-compress-base-common")
+    provides("perl-io-compress-bzip2")
+    provides("perl-io-compress-deflate")
+    provides("perl-io-compress-gzip")
+    provides("perl-io-compress-gzip-constants")
+    provides("perl-io-compress-rawdeflate")
+    provides("perl-io-compress-zip")
+    provides("perl-io-compress-zip-constants")
+    provides("perl-io-compress-zlib-constants")
+    provides("perl-io-compress-zlib-extra")
+    provides("perl-io-uncompress-adapter-bunzip2")
+    provides("perl-io-uncompress-adapter-identity")
+    provides("perl-io-uncompress-adapter-inflate")
+    provides("perl-io-uncompress-anyinflate")
+    provides("perl-io-uncompress-anyuncompress")
+    provides("perl-io-uncompress-base")
+    provides("perl-io-uncompress-bunzip2")
+    provides("perl-io-uncompress-gunzip")
+    provides("perl-io-uncompress-inflate")
+    provides("perl-io-uncompress-rawinflate")
+    provides("perl-io-uncompress-unzip")
+    provides("perl-u64")
+    provides("perl-zlib-olddeflate")
+    provides("perl-zlib-oldinflate")
+    depends_on("perl-compress-raw-bzip2@2.201:", type="run")
+    depends_on("perl-extutils-makemaker", type="build")
+    depends_on("perl-scalar-util", type="run")
+    depends_on("perl-time-local", type="run")
+    depends_on("perl-compress-raw-zlib@2.201:", type="run")

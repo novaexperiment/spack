@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -12,6 +12,9 @@ class PerlCompressRawZlib(PerlPackage):
     homepage = "https://metacpan.org/pod/Compress::Raw::Zlib"
     url = "https://cpan.metacpan.org/authors/id/P/PM/PMQS/Compress-Raw-Zlib-2.081.tar.gz"
 
+    license("GPL-1.0-or-later OR Artistic-1.0-Perl")
+
+    version("2.206", sha256="46785a6a383a1c843895b7f9f25d5d759e7c305159f9d1e04a3604eb74c77374")
     version("2.204", sha256="f161f4297efadbed79c8b096a75951784fc5ccd3170bd32866a19e5c6876d13f")
     version("2.202", sha256="96e20946eb457a32d2d7a0050b922e37b5ada41246bcdc824196d3f7c4da91b7")
     version("2.201", sha256="a1413b20b17893e604251ca52f259c2554639531f4d82ff573137135b5137c06")

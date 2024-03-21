@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -15,48 +15,50 @@ class PerlExtutilsMakemaker(PerlPackage):
     homepage = "https://github.com/Perl-Toolchain-Gang/ExtUtils-MakeMaker"
     url = "https://cpan.metacpan.org/authors/id/B/BI/BINGOS/ExtUtils-MakeMaker-7.24.tar.gz"
 
+    license("GPL-1.0-or-later OR Artistic-1.0-Perl")
+
     version("7.70", sha256="f108bd46420d2f00d242825f865b0f68851084924924f92261d684c49e3e7a74")
     version("7.68", sha256="270238d253343b833daa005fb57a3a5d8916b59da197698a632b141e7acad779")
     version("7.65_02", sha256="a933a21ec1fe340dad272334e6a0623d3140cb649568ec0d2aa1f0c00a423986")
     version("7.64", sha256="4a6ac575815c0413b1f58967043cc9f2e166446b73c687f9bc62b5eaed9464a0")
     version("7.24", sha256="416abc97c3bb2cc72bef28852522f2859de53e37bf3d0ae8b292067d78755e69")
 
-    provides("perl-dynaloader")  # AUTO-CPAN2Spack
-    provides("perl-extutils-command")  # AUTO-CPAN2Spack
-    provides("perl-extutils-command-mm")  # AUTO-CPAN2Spack
-    provides("perl-extutils-liblist")  # AUTO-CPAN2Spack
-    provides("perl-extutils-liblist-kid")  # AUTO-CPAN2Spack
-    provides("perl-extutils-mm")  # AUTO-CPAN2Spack
-    provides("perl-extutils-mm-aix")  # AUTO-CPAN2Spack
-    provides("perl-extutils-mm-any")  # AUTO-CPAN2Spack
-    provides("perl-extutils-mm-beos")  # AUTO-CPAN2Spack
-    provides("perl-extutils-mm-cygwin")  # AUTO-CPAN2Spack
-    provides("perl-extutils-mm-dos")  # AUTO-CPAN2Spack
-    provides("perl-extutils-mm-darwin")  # AUTO-CPAN2Spack
-    provides("perl-extutils-mm-macos")  # AUTO-CPAN2Spack
-    provides("perl-extutils-mm-nw5")  # AUTO-CPAN2Spack
-    provides("perl-extutils-mm-os2")  # AUTO-CPAN2Spack
-    provides("perl-extutils-mm-os390")  # AUTO-CPAN2Spack
-    provides("perl-extutils-mm-qnx")  # AUTO-CPAN2Spack
-    provides("perl-extutils-mm-uwin")  # AUTO-CPAN2Spack
-    provides("perl-extutils-mm-unix")  # AUTO-CPAN2Spack
-    provides("perl-extutils-mm-vms")  # AUTO-CPAN2Spack
-    provides("perl-extutils-mm-vos")  # AUTO-CPAN2Spack
-    provides("perl-extutils-mm-win32")  # AUTO-CPAN2Spack
-    provides("perl-extutils-mm-win95")  # AUTO-CPAN2Spack
-    provides("perl-extutils-my")  # AUTO-CPAN2Spack
-    provides("perl-extutils-makemaker-config")  # AUTO-CPAN2Spack
-    provides("perl-extutils-makemaker-locale")  # AUTO-CPAN2Spack
-    provides("perl-extutils-makemaker--version")  # AUTO-CPAN2Spack
-    provides("perl-extutils-makemaker-charstar")  # AUTO-CPAN2Spack
-    provides("perl-extutils-makemaker-version")  # AUTO-CPAN2Spack
-    provides("perl-extutils-makemaker-version-regex")  # AUTO-CPAN2Spack
-    provides("perl-extutils-makemaker-version-vpp")  # AUTO-CPAN2Spack
-    provides("perl-extutils-mkbootstrap")  # AUTO-CPAN2Spack
-    provides("perl-extutils-mksymlists")  # AUTO-CPAN2Spack
-    provides("perl-extutils-testlib")  # AUTO-CPAN2Spack
-    provides("perl-mm")  # AUTO-CPAN2Spack
-    provides("perl-my")  # AUTO-CPAN2Spack
-    provides("perl-version")  # AUTO-CPAN2Spack
-    depends_on("perl@5.6:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-data-dumper", type="run")  # AUTO-CPAN2Spack
+    provides("perl-dynaloader")
+    provides("perl-extutils-command")
+    provides("perl-extutils-command-mm")
+    provides("perl-extutils-liblist")
+    provides("perl-extutils-liblist-kid")
+    provides("perl-extutils-mm")
+    provides("perl-extutils-mm-aix")
+    provides("perl-extutils-mm-any")
+    provides("perl-extutils-mm-beos")
+    provides("perl-extutils-mm-cygwin")
+    provides("perl-extutils-mm-dos")
+    provides("perl-extutils-mm-darwin")
+    provides("perl-extutils-mm-macos")
+    provides("perl-extutils-mm-nw5")
+    provides("perl-extutils-mm-os2")
+    provides("perl-extutils-mm-os390")
+    provides("perl-extutils-mm-qnx")
+    provides("perl-extutils-mm-uwin")
+    provides("perl-extutils-mm-unix")
+    provides("perl-extutils-mm-vms")
+    provides("perl-extutils-mm-vos")
+    provides("perl-extutils-mm-win32")
+    provides("perl-extutils-mm-win95")
+    provides("perl-extutils-my")
+    provides("perl-extutils-makemaker-config")
+    provides("perl-extutils-makemaker-locale")
+    provides("perl-extutils-makemaker--version")
+    provides("perl-extutils-makemaker-charstar")
+    provides("perl-extutils-makemaker-version")
+    provides("perl-extutils-makemaker-version-regex")
+    provides("perl-extutils-makemaker-version-vpp")
+    provides("perl-extutils-mkbootstrap")
+    provides("perl-extutils-mksymlists")
+    provides("perl-extutils-testlib")
+    provides("perl-mm")
+    provides("perl-my")
+    provides("perl-version")
+    depends_on("perl@5.6:", type="run")
+    depends_on("perl-data-dumper", type="run")

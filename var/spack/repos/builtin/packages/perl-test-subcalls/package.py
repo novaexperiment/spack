@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -7,15 +7,19 @@ from spack.package import *
 
 
 class PerlTestSubcalls(PerlPackage):
-    """Track the number of times subs are called."""  # AUTO-CPAN2Spack
+    """Track the number of times subs are called"""
 
-    homepage = "https://github.com/karenetheridge/Test-SubCalls"  # AUTO-CPAN2Spack
+    homepage = "https://metacpan.org/pod/Test::SubCalls"
     url = "https://cpan.metacpan.org/authors/id/E/ET/ETHER/Test-SubCalls-1.10.tar.gz"
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("greenc-FNAL", "EbiArnie", "gartung", "marcmengel", "vito")
+
+    license("Artistic-1.0-Perl OR GPL-1.0-or-later")
 
     version("1.10", sha256="cbc1e9b35a05e71febc13e5ef547a31c8249899bb6011dbdc9d9ff366ddab6c2")
 
-    depends_on("perl@5.6:", type=("build", "run", "test"))  # AUTO-CPAN2Spack
-    depends_on("perl-extutils-makemaker", type=("build", "test"))  # AUTO-CPAN2Spack
-    depends_on("perl-hook-lexwrap@0.20:", type="run")  # AUTO-CPAN2Spack
+    depends_on("perl@5.6.0:", type=("build", "link", "run", "test"))
+
+    depends_on("perl-extutils-makemaker", type=("build", "test"))
+
+    depends_on("perl-hook-lexwrap@0.20:", type=("build", "run", "test"))

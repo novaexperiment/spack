@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -14,8 +14,8 @@ class PerlReadonly(PerlPackage):
 
     version("2.05", sha256="4b23542491af010d44a5c7c861244738acc74ababae6b8838d354dfb19462b5e")
 
-    provides("perl-readonly-array")  # AUTO-CPAN2Spack
-    provides("perl-readonly-hash")  # AUTO-CPAN2Spack
-    provides("perl-readonly-scalar")  # AUTO-CPAN2Spack
-    depends_on("perl@5.5:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-module-build-tiny@0.35:", type="build")  # AUTO-CPAN2Spack
+    provides("perl-readonly-array")
+    provides("perl-readonly-hash")
+    provides("perl-readonly-scalar")
+    depends_on("perl@5.5:", type="run")
+    depends_on("perl-module-build-tiny@0.35:", type="build")

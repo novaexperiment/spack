@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -8,12 +8,14 @@ from spack.package import *
 
 
 class PerlSubQuote(PerlPackage):
-    """Efficient generation of subroutines via string eval."""  # AUTO-CPAN2Spack
+    """Efficient generation of subroutines via string eval."""
 
-    homepage = "https://cpan.metacpan.org/authors/id/H/HA/HAARG"  # AUTO-CPAN2Spack
+    homepage = "https://cpan.metacpan.org/authors/id/H/HA/HAARG"
     url = "https://cpan.metacpan.org/authors/id/H/HA/HAARG/Sub-Quote-2.006006.tar.gz"
 
-    maintainers = ["chissg", "gartung", "marcmengel", "vitodb"]  # AUTO-CPAN2Spack
+    license("GPL-1.0-or-later OR Artistic-1.0-Perl")
+
+    maintainers = ["greenc-FNAL", "gartung", "marcmengel", "vitodb"]
 
     version(
         "2.006.008",
@@ -34,9 +36,9 @@ class PerlSubQuote(PerlPackage):
         url="https://cpan.metacpan.org/authors/id/H/HA/HAARG/Sub-Quote-2.006003.tar.gz",
     )
 
-    provides("perl-sub-defer")  # AUTO-CPAN2Spack
-    depends_on("perl-test-fatal@0.3:", type=("build", "test"))  # AUTO-CPAN2Spack
-    depends_on("perl@5.6:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-sub-name@0.8:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-extutils-makemaker", type="build")  # AUTO-CPAN2Spack
-    depends_on("perl-scalar-util", type="run")  # AUTO-CPAN2Spack
+    provides("perl-sub-defer")
+    depends_on("perl-test-fatal@0.3:", type=("build", "test"))
+    depends_on("perl@5.6:", type="run")
+    depends_on("perl-sub-name@0.8:", type="run")
+    depends_on("perl-extutils-makemaker", type="build")
+    depends_on("perl-scalar-util", type="run")

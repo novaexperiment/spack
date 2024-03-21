@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -12,6 +12,8 @@ class PerlExporterTiny(PerlPackage):
 
     homepage = "https://metacpan.org/pod/Exporter::Tiny"
     url = "https://cpan.metacpan.org/authors/id/T/TO/TOBYINK/Exporter-Tiny-1.000000.tar.gz"
+
+    license("GPL-1.0-or-later OR Artistic-1.0-Perl")
 
     version(
         "1.006.002",
@@ -46,8 +48,9 @@ class PerlExporterTiny(PerlPackage):
         url="https://cpan.metacpan.org/authors/id/T/TO/TOBYINK/Exporter-Tiny-1.000000.tar.gz",
     )
 
-    provides("perl-exporter-shiny")  # AUTO-CPAN2Spack
-    depends_on("perl@5.6.1:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-test-fatal", type=("build", "test"))  # AUTO-CPAN2Spack
-    depends_on("perl-test-warnings", type=("build", "test"))  # AUTO-CPAN2Spack
-    depends_on("perl-extutils-makemaker@6.17:", type="build")  # AUTO-CPAN2Spack
+    provides("perl-exporter-shiny")
+
+    depends_on("perl@5.6.1:", type="run")
+    depends_on("perl-test-fatal", type=("build", "test"))
+    depends_on("perl-test-warnings", type=("build", "test"))
+    depends_on("perl-extutils-makemaker@6.17:", type="build")

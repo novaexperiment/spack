@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -14,30 +14,32 @@ class PerlYaml(PerlPackage):
     homepage = "https://metacpan.org/pod/YAML"
     url = "https://cpan.metacpan.org/authors/id/T/TI/TINITA/YAML-1.27.tar.gz"
 
+    license("GPL-1.0-or-later OR Artistic-1.0-Perl")
+
     version("1.30", sha256="5030a6d6cbffaf12583050bf552aa800d4646ca9678c187add649227f57479cd")
     version("1.27", sha256="c992a1e820de0721b62b22521de92cdbf49edc306ab804c485b4b1ec25f682f9")
-    provides("perl-yaml-any")  # AUTO-CPAN2Spack
-    provides("perl-yaml-dumper")  # AUTO-CPAN2Spack
-    provides("perl-yaml-dumper-base")  # AUTO-CPAN2Spack
-    provides("perl-yaml-error")  # AUTO-CPAN2Spack
-    provides("perl-yaml-loader")  # AUTO-CPAN2Spack
-    provides("perl-yaml-loader-base")  # AUTO-CPAN2Spack
-    provides("perl-yaml-marshall")  # AUTO-CPAN2Spack
-    provides("perl-yaml-mo")  # AUTO-CPAN2Spack
-    provides("perl-yaml-node")  # AUTO-CPAN2Spack
-    provides("perl-yaml-tag")  # AUTO-CPAN2Spack
-    provides("perl-yaml-type-blessed")  # AUTO-CPAN2Spack
-    provides("perl-yaml-type-code")  # AUTO-CPAN2Spack
-    provides("perl-yaml-type-glob")  # AUTO-CPAN2Spack
-    provides("perl-yaml-type-ref")  # AUTO-CPAN2Spack
-    provides("perl-yaml-type-regexp")  # AUTO-CPAN2Spack
-    provides("perl-yaml-type-undef")  # AUTO-CPAN2Spack
-    provides("perl-yaml-types")  # AUTO-CPAN2Spack
-    provides("perl-yaml-warning")  # AUTO-CPAN2Spack
-    provides("perl-yaml-mapping")  # AUTO-CPAN2Spack
-    provides("perl-yaml-scalar")  # AUTO-CPAN2Spack
-    provides("perl-yaml-sequence")  # AUTO-CPAN2Spack
-    depends_on("perl@5.8.1:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-test-deep", type=("build", "test"))  # AUTO-CPAN2Spack
-    depends_on("perl-extutils-makemaker", type="build")  # AUTO-CPAN2Spack
-    depends_on("perl-test-yaml@1.5:", type=("build", "test"))  # AUTO-CPAN2Spack
+    provides("perl-yaml-any")
+    provides("perl-yaml-dumper")
+    provides("perl-yaml-dumper-base")
+    provides("perl-yaml-error")
+    provides("perl-yaml-loader")
+    provides("perl-yaml-loader-base")
+    provides("perl-yaml-marshall")
+    provides("perl-yaml-mo")
+    provides("perl-yaml-node")
+    provides("perl-yaml-tag")
+    provides("perl-yaml-type-blessed")
+    provides("perl-yaml-type-code")
+    provides("perl-yaml-type-glob")
+    provides("perl-yaml-type-ref")
+    provides("perl-yaml-type-regexp")
+    provides("perl-yaml-type-undef")
+    provides("perl-yaml-types")
+    provides("perl-yaml-warning")
+    provides("perl-yaml-mapping")
+    provides("perl-yaml-scalar")
+    provides("perl-yaml-sequence")
+    depends_on("perl@5.8.1:", type="run")
+    depends_on("perl-test-deep", type=("build", "test"))
+    depends_on("perl-extutils-makemaker", type="build")
+    depends_on("perl-test-yaml@1.5:", type=("build", "test"))

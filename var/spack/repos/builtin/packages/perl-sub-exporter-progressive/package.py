@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -12,6 +12,8 @@ class PerlSubExporterProgressive(PerlPackage):
     homepage = "https://metacpan.org/pod/Sub::Exporter::Progressive"
     url = "http://cpan.metacpan.org/authors/id/F/FR/FREW/Sub-Exporter-Progressive-0.001013.tar.gz"
 
+    license("GPL-1.0-or-later OR Artistic-1.0-Perl")
+
     version(
         "0.001.013",
         sha256="d535b7954d64da1ac1305b1fadf98202769e3599376854b2ced90c382beac056",
@@ -23,4 +25,4 @@ class PerlSubExporterProgressive(PerlPackage):
         url="http://cpan.metacpan.org/authors/id/F/FR/FREW/Sub-Exporter-Progressive-0.001012.tar.gz",
     )
 
-    depends_on("perl-extutils-makemaker", type="build")  # AUTO-CPAN2Spack
+    depends_on("perl-extutils-makemaker", type="build")

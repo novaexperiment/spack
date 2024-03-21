@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -12,6 +12,10 @@ class PerlNamespaceClean(PerlPackage):
     homepage = "https://metacpan.org/pod/namespace::clean"
     url = "https://cpan.metacpan.org/authors/id/R/RI/RIBASUSHI/namespace-clean-0.26_03.tar.gz"
 
+    maintainers("EbiArnie")
+
+    license("GPL-1.0-or-later OR Artistic-1.0-Perl")
+
     version("0.27", sha256="8a10a83c3e183dc78f9e7b7aa4d09b47c11fb4e7d3a33b9a12912fd22e31af9d")
     version("0.26_03", sha256="3ad9a1a0ed76eff3be8bcce6ee86b70e9fa372e8ac24ce98f75268827487e396")
     version("0.26_02", sha256="391a55eaaec1af455c5a36445f0d2923f33ebcb8a7d156703c93da2689df8472")
@@ -23,7 +27,7 @@ class PerlNamespaceClean(PerlPackage):
     version("0.25", sha256="946a2b7b8219562818867ad915cd493637e2639f901db050b835500c8e6ecd04")
     version("0.24", sha256="a661d4484e7de411bc96819aec28805836cfa6a5e276bb3cd346f8e108911230")
 
-    depends_on("perl@5.8.1:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-b-hooks-endofscope@0.12:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-package-stash@0.23:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-extutils-makemaker", type="build")  # AUTO-CPAN2Spack
+    depends_on("perl@5.8.1:", type=("build", "run", "test"))
+    depends_on("perl-b-hooks-endofscope@0.12:", type=("build", "run", "test"))
+    depends_on("perl-package-stash@0.23:", type=("build", "run", "test"))
+    depends_on("perl-extutils-makemaker", type="build")

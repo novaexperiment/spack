@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -7,12 +7,14 @@ from spack.package import *
 
 
 class PerlSafeIsa(PerlPackage):
-    """Call isa, can, does and DOES safely on things that may not be objects."""  # AUTO-CPAN2Spack
+    """Call isa, can, does and DOES safely on things that may not be objects"""
 
-    homepage = "https://cpan.metacpan.org/authors/id/E/ET/ETHER"  # AUTO-CPAN2Spack
+    homepage = "https://metacpan.org/pod/Safe::Isa"
     url = "https://cpan.metacpan.org/authors/id/E/ET/ETHER/Safe-Isa-1.000010.tar.gz"
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")  # AUTO-CPAN2Spack
+    maintainers("greenc-FNAL", "EbiArnie", "gartung", "marcmengel", "vito")
+
+    license("GPL-1.0-or-later OR Artistic-1.0-Perl")
 
     version(
         "1.000.010",
@@ -25,6 +27,6 @@ class PerlSafeIsa(PerlPackage):
         url="https://cpan.metacpan.org/authors/id/E/ET/ETHER/Safe-Isa-1.000009.tar.gz",
     )
 
-    depends_on("perl@5.6:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-extutils-makemaker", type="build")  # AUTO-CPAN2Spack
-    depends_on("perl-scalar-util", type="run")  # AUTO-CPAN2Spack
+    depends_on("perl@5.6:", type=("build", "run", "test"))
+    depends_on("perl-extutils-makemaker", type="build")
+    depends_on("perl-scalar-util", type=("build", "run", "test"))
