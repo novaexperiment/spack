@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -13,7 +13,9 @@ class PySphinxThemeBuilder(PythonPackage):
     pypi = "sphinx-theme-builder/sphinx-theme-builder-0.2.0b2.tar.gz"
     git = "https://github.com/pradyunsg/sphinx-theme-builder"
 
-    maintainers("chissg", "gartung", "marcmengel", "vitodb")
+    license("MIT")
+
+    maintainers("greenc-FNAL", "gartung", "marcmengel", "vitodb")
 
     version("0.2.0b2", sha256="e9cd98c2bb35bf414fe721469a043cdcc10f0808d1ffcf606acb4a6282a6f288")
     version("0.2.0b1", sha256="e9bb4a0a8516bab8769b9ddf003b70e5878611113319eb1fdb690af84a3a595f")

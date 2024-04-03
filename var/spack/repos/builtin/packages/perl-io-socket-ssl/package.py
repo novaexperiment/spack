@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -13,6 +13,8 @@ class PerlIoSocketSsl(PerlPackage):
 
     homepage = "https://metacpan.org/dist/IO-Socket-SSL/view/lib/IO/Socket/SSL.pod"
     url = "https://cpan.metacpan.org/authors/id/S/SU/SULLR/IO-Socket-SSL-2.052.tar.gz"
+
+    license("GPL-1.0-or-later OR Artistic-1.0-Perl")
 
     version("2.074", sha256="36486b6be49da4d029819cf7069a7b41ed48af0c87e23be0f8e6aba23d08a832")
     version("2.073", sha256="b2c0b34df97cb1aa816221cee2454a1efd89b86ccbda810389a30e0d08cf57c8")
@@ -38,18 +40,18 @@ class PerlIoSocketSsl(PerlPackage):
     version("2.053", sha256="c51eaf315cddd2d0d6f870bce9d3fe58872a02148017ac10f25d2e6b25c15bbb")
     version("2.052", sha256="e4897a9b17cb18a3c44aa683980d52cef534cdfcb8063d6877c879bfa2f26673")
 
-    provides("perl-io-socket-ssl-intercept@2.056")  # AUTO-CPAN2Spack
-    provides("perl-io-socket-ssl-ocsp-cache")  # AUTO-CPAN2Spack
-    provides("perl-io-socket-ssl-ocsp-resolver")  # AUTO-CPAN2Spack
-    provides("perl-io-socket-ssl-publicsuffix")  # AUTO-CPAN2Spack
-    provides("perl-io-socket-ssl-ssl-context")  # AUTO-CPAN2Spack
-    provides("perl-io-socket-ssl-ssl-handle")  # AUTO-CPAN2Spack
-    provides("perl-io-socket-ssl-session-cache")  # AUTO-CPAN2Spack
-    provides("perl-io-socket-ssl-utils@2.015")  # AUTO-CPAN2Spack
-    depends_on("perl-extutils-makemaker", type="build")  # AUTO-CPAN2Spack
-    depends_on("perl-scalar-util", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-mozilla-ca", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-net-ssleay@1.46:", type="run")  # AUTO-CPAN2Spack
+    provides("perl-io-socket-ssl-intercept@2.056")
+    provides("perl-io-socket-ssl-ocsp-cache")
+    provides("perl-io-socket-ssl-ocsp-resolver")
+    provides("perl-io-socket-ssl-publicsuffix")
+    provides("perl-io-socket-ssl-ssl-context")
+    provides("perl-io-socket-ssl-ssl-handle")
+    provides("perl-io-socket-ssl-session-cache")
+    provides("perl-io-socket-ssl-utils@2.015")
+    depends_on("perl-extutils-makemaker", type="build")
+    depends_on("perl-scalar-util", type="run")
+    depends_on("perl-mozilla-ca", type="run")
+    depends_on("perl-net-ssleay@1.46:", type="run")
 
 
 class PerlBuilder(spack.build_systems.perl.PerlBuilder):

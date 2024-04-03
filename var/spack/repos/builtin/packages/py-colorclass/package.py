@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -11,6 +11,8 @@ class PyColorclass(PythonPackage):
 
     homepage = "https://github.com/Robpol86/colorclass"
     pypi = "colorclass/colorclass-2.2.2.tar.gz"
+
+    license("MIT")
 
     version("2.2.2", sha256="6d4fe287766166a98ca7bc6f6312daf04a0481b1eda43e7173484051c0ab4366")
     version("2.2.1", sha256="f8435bff93eb1f77c41f8363f1ff8a8bb1b1fe1e459eb6482a3542a4018b5f31")

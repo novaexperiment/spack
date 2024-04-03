@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -11,6 +11,8 @@ class PerlTimeHires(PerlPackage):
 
     homepage = "https://metacpan.org/pod/Time::HiRes"
     url = "https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/Time-HiRes-1.9764.tar.gz"
+
+    license("GPL-1.0-or-later OR Artistic-1.0-Perl")
 
     version(
         "1.97.64_02",
@@ -87,5 +89,6 @@ class PerlTimeHires(PerlPackage):
         sha256="89408c81bb827bc908c98eec50071e6e1158f38fa462865ecc3dc03aebf5f596",
         url="https://cpan.metacpan.org/authors/id/J/JH/JHI/Time-HiRes-1.9746.tar.gz",
     )
-    depends_on("perl@5.6:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-extutils-makemaker", type=("build", "run"))  # AUTO-CPAN2Spack
+
+    depends_on("perl@5.6:", type="run")
+    depends_on("perl-extutils-makemaker", type=("build", "run"))

@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -20,6 +20,8 @@ class RangeV3(CMakePackage):
     url = "https://github.com/ericniebler/range-v3/archive/refs/tags/0.12.0.tar.gz"
     git = "https://github.com/ericniebler/range-v3.git"
     maintainers("greenc-FNAL")
+
+    license("BSL-1.0")
 
     version("master", branch="master")
     version("0.12.0", sha256="015adb2300a98edfceaf0725beec3337f542af4915cec4d0b89fa0886f4ba9cb")

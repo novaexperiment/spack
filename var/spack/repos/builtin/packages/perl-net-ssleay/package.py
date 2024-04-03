@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -13,6 +13,8 @@ class PerlNetSsleay(PerlPackage):
 
     homepage = "https://metacpan.org/pod/Net::SSLeay"
     url = "https://cpan.metacpan.org/authors/id/C/CH/CHRISN/Net-SSLeay-1.92.tar.gz"
+
+    license("Artistic-2.0")
 
     version("1.93_01", sha256="876d022fbc719631b11d6bb4b6e78db3c19bbca578093c376c8f9900a4432aa3")
     version(
@@ -44,10 +46,10 @@ class PerlNetSsleay(PerlPackage):
 
     depends_on("openssl")
 
-    provides("perl-net-ssleay-handle")  # AUTO-CPAN2Spack
-    depends_on("perl@5.8.1:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-extutils-makemaker", type="build")  # AUTO-CPAN2Spack
-    depends_on("perl-scalar-util", type=("build", "test"))  # AUTO-CPAN2Spack
+    provides("perl-net-ssleay-handle")
+    depends_on("perl@5.8.1:", type="run")
+    depends_on("perl-extutils-makemaker", type="build")
+    depends_on("perl-scalar-util", type=("build", "test"))
 
 
 class PerlBuilder(spack.build_systems.perl.PerlBuilder):

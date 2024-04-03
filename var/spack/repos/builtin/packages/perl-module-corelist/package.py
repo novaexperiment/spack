@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -19,6 +19,6 @@ class PerlModuleCorelist(PerlPackage):
         "5.20220820", sha256="708effbbf04158b087d34d8acc707f35bdab9dccc61b41d432cb6d995d137f43"
     )
 
-    provides("perl-module-corelist-utils")  # AUTO-CPAN2Spack
-    depends_on("perl-extutils-makemaker", type="build")  # AUTO-CPAN2Spack
-    depends_on("perl-list-util", type="run")  # AUTO-CPAN2Spack
+    provides("perl-module-corelist-utils")
+    depends_on("perl-extutils-makemaker", type="build")
+    depends_on("perl-list-util", type="run")

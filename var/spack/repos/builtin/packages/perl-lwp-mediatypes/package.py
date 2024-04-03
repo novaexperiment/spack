@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -12,6 +12,8 @@ class PerlLwpMediatypes(PerlPackage):
     homepage = "https://metacpan.org/pod/LWP::MediaTypes"
     url = "https://cpan.metacpan.org/authors/id/O/OA/OALDERS/LWP-MediaTypes-6.04.tar.gz"
 
+    license("GPL-1.0-or-later OR Artistic-1.0-Perl")
+
     version("6.04", sha256="8f1bca12dab16a1c2a7c03a49c5e58cce41a6fec9519f0aadfba8dad997919d9")
     version(
         "6.02",
@@ -19,7 +21,7 @@ class PerlLwpMediatypes(PerlPackage):
         url="https://cpan.metacpan.org/authors/id/G/GA/GAAS/LWP-MediaTypes-6.02.tar.gz",
     )
 
-    depends_on("perl-test-fatal", type=("build", "test"))  # AUTO-CPAN2Spack
-    depends_on("perl@5.6.2:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-extutils-makemaker", type=("build", "test"))  # AUTO-CPAN2Spack
-    depends_on("perl-scalar-util", type="run")  # AUTO-CPAN2Spack
+    depends_on("perl-test-fatal", type=("build", "test"))
+    depends_on("perl@5.6.2:", type="run")
+    depends_on("perl-extutils-makemaker", type=("build", "test"))
+    depends_on("perl-scalar-util", type="run")

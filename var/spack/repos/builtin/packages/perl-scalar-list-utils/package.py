@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -27,9 +27,11 @@ class PerlScalarListUtils(PerlPackage):
     version("1.52", sha256="279d78cef84acae280da4dfb95eff0c9865d1611b1a3b026baddf42d1ba01de4")
     version("1.51", sha256="d9c8eab1ac5a6fc75a7e836304626e2cb7b13cf8c9b10d491a144e1ef6760a76")
     version("1.50", sha256="06aab9c693380190e53be09be7daed20c5d6278f71956989c24cca7782013675")
-    provides("perl-list-util")  # AUTO-CPAN2Spack
-    provides("perl-list-util-xs")  # AUTO-CPAN2Spack
-    provides("perl-scalar-util")  # AUTO-CPAN2Spack
-    provides("perl-sub-util")  # AUTO-CPAN2Spack
-    depends_on("perl@5.6:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-extutils-makemaker", type="build")  # AUTO-CPAN2Spack
+
+    provides("perl-list-util")
+    provides("perl-list-util-xs")
+    provides("perl-scalar-util")
+    provides("perl-sub-util")
+
+    depends_on("perl@5.6:", type="run")
+    depends_on("perl-extutils-makemaker", type="build")

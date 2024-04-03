@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -13,12 +13,14 @@ class PerlFileFindRule(PerlPackage):
     homepage = "https://metacpan.org/pod/File::Find::Rule"
     url = "https://cpan.metacpan.org/authors/id/R/RC/RCLAMP/File-Find-Rule-0.34.tar.gz"
 
+    license("GPL-1.0-or-later OR Artistic-1.0-Perl")
+
     version("0.34", sha256="7e6f16cc33eb1f29ff25bee51d513f4b8a84947bbfa18edb2d3cc40a2d64cafe")
 
     depends_on("perl-extutils-makemaker", type="build")
     depends_on("perl-number-compare", type=("build", "run"))
     depends_on("perl-text-glob", type=("build", "run"))
-    provides("perl-file-find-rule-test-ateam")  # AUTO-CPAN2Spack
-    depends_on("perl-extutils-makemaker", type="build")  # AUTO-CPAN2Spack
-    depends_on("perl-number-compare", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-text-glob@0.7:", type="run")  # AUTO-CPAN2Spack
+    provides("perl-file-find-rule-test-ateam")
+    depends_on("perl-extutils-makemaker", type="build")
+    depends_on("perl-number-compare", type="run")
+    depends_on("perl-text-glob@0.7:", type="run")

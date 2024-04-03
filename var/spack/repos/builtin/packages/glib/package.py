@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -26,6 +26,9 @@ class Glib(MesonPackage, AutotoolsPackage):
 
     maintainers("michaelkuhn")
 
+    license("LGPL-2.1-or-later")
+
+    version("2.78.3", sha256="609801dd373796e515972bf95fc0b2daa44545481ee2f465c4f204d224b2bc21")
     version("2.78.0", sha256="44eaab8b720877ce303c5540b657b126f12dc94972d9880b52959f43fb537b30")
     version("2.76.6", sha256="1136ae6987dcbb64e0be3197a80190520f7acab81e2bfb937dc85c11c8aa9f04")
     version("2.76.4", sha256="5a5a191c96836e166a7771f7ea6ca2b0069c603c7da3cba1cd38d1694a395dda")
@@ -61,11 +64,7 @@ class Glib(MesonPackage, AutotoolsPackage):
     version("2.62.6", sha256="104fa26fbefae8024ff898330c671ec23ad075c1c0bce45c325c6d5657d58b9c")
     version("2.60.7", sha256="8b12c0af569afd3b71200556ad751bad4cf4bf7bc4b5f880638459a42ca86310")
     version("2.58.3", sha256="8f43c31767e88a25da72b52a40f3301fefc49a665b56dc10ee7cc9565cbe7481")
-    version(
-        "2.56.4",
-        sha256="27f703d125efb07f8a743666b580df0b4095c59fc8750e8890132c91d437504c",
-        deprecated=True,
-    )
+    version("2.56.4", sha256="27f703d125efb07f8a743666b580df0b4095c59fc8750e8890132c91d437504c")
     version(
         "2.56.3",
         sha256="a9a4c5b4c81b6c75bc140bdf5e32120ef3ce841b7413214ecf5f987acec74cb2",
@@ -212,7 +211,6 @@ class BaseBuilder(metaclass=spack.builder.PhaseCallbacksMeta):
     def dtrace_copy_path(self):
         return join_path(self.stage.source_path, "dtrace-copy")
 
-    @run_before("install")
     def fix_python_path(self):
         if not self.spec.satisfies("@2.53.4:"):
             return
@@ -328,6 +326,10 @@ class MesonBuilder(BaseBuilder, spack.build_systems.meson.MesonBuilder):
                     args.append("-Diconv=gnu")
         return args
 
+    @run_before("meson")
+    def fix_python_path(self):
+        super().fix_python_path()
+
 
 class AutotoolsBuilder(BaseBuilder, spack.build_systems.autotools.AutotoolsBuilder):
     def configure_args(self):
@@ -370,3 +372,7 @@ class AutotoolsBuilder(BaseBuilder, spack.build_systems.autotools.AutotoolsBuild
         args.append("GTKDOC_MKPDF={0}".format(true))
         args.append("GTKDOC_REBASE={0}".format(true))
         return args
+
+    @run_before("configure")
+    def fix_python_path(self):
+        super().fix_python_path()

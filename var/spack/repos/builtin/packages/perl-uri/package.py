@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -11,6 +11,10 @@ class PerlUri(PerlPackage):
 
     homepage = "https://metacpan.org/pod/URI"
     url = "https://cpan.metacpan.org/authors/id/O/OA/OALDERS/URI-5.12.tar.gz"
+
+    skip_modules = ["URI::urn::isbn"]  # required missing Business::ISBN
+
+    license("GPL-1.0-or-later OR Artistic-1.0-Perl")
 
     version("5.12", sha256="66abe0eaddd76b74801ecd28ec1411605887550fc0a45ef6aa744fdad768d9b3")
     version("5.11", sha256="d3b62a69a6ab288021167d428ac4673c399d42e4de69eb49c7953a30821843c9")
@@ -44,51 +48,51 @@ class PerlUri(PerlPackage):
         sha256="9c8eca0d7f39e74bbc14706293e653b699238eeb1a7690cc9c136fb8c2644115",
     )
 
-    provides("perl-uri-escape")  # AUTO-CPAN2Spack
-    provides("perl-uri-heuristic")  # AUTO-CPAN2Spack
-    provides("perl-uri-iri")  # AUTO-CPAN2Spack
-    provides("perl-uri-queryparam")  # AUTO-CPAN2Spack
-    provides("perl-uri-split")  # AUTO-CPAN2Spack
-    provides("perl-uri-url")  # AUTO-CPAN2Spack
-    provides("perl-uri-withbase")  # AUTO-CPAN2Spack
-    provides("perl-uri-data")  # AUTO-CPAN2Spack
-    provides("perl-uri-file")  # AUTO-CPAN2Spack
-    provides("perl-uri-file-base")  # AUTO-CPAN2Spack
-    provides("perl-uri-file-fat")  # AUTO-CPAN2Spack
-    provides("perl-uri-file-mac")  # AUTO-CPAN2Spack
-    provides("perl-uri-file-os2")  # AUTO-CPAN2Spack
-    provides("perl-uri-file-qnx")  # AUTO-CPAN2Spack
-    provides("perl-uri-file-unix")  # AUTO-CPAN2Spack
-    provides("perl-uri-file-win32")  # AUTO-CPAN2Spack
-    provides("perl-uri-ftp")  # AUTO-CPAN2Spack
-    provides("perl-uri-gopher")  # AUTO-CPAN2Spack
-    provides("perl-uri-http")  # AUTO-CPAN2Spack
-    provides("perl-uri-https")  # AUTO-CPAN2Spack
-    provides("perl-uri-ldap")  # AUTO-CPAN2Spack
-    provides("perl-uri-ldapi")  # AUTO-CPAN2Spack
-    provides("perl-uri-ldaps")  # AUTO-CPAN2Spack
-    provides("perl-uri-mailto")  # AUTO-CPAN2Spack
-    provides("perl-uri-mms")  # AUTO-CPAN2Spack
-    provides("perl-uri-news")  # AUTO-CPAN2Spack
-    provides("perl-uri-nntp")  # AUTO-CPAN2Spack
-    provides("perl-uri-nntps")  # AUTO-CPAN2Spack
-    provides("perl-uri-pop")  # AUTO-CPAN2Spack
-    provides("perl-uri-rlogin")  # AUTO-CPAN2Spack
-    provides("perl-uri-rsync")  # AUTO-CPAN2Spack
-    provides("perl-uri-rtsp")  # AUTO-CPAN2Spack
-    provides("perl-uri-rtspu")  # AUTO-CPAN2Spack
-    provides("perl-uri-sftp")  # AUTO-CPAN2Spack
-    provides("perl-uri-sip")  # AUTO-CPAN2Spack
-    provides("perl-uri-sips")  # AUTO-CPAN2Spack
-    provides("perl-uri-snews")  # AUTO-CPAN2Spack
-    provides("perl-uri-ssh")  # AUTO-CPAN2Spack
-    provides("perl-uri-telnet")  # AUTO-CPAN2Spack
-    provides("perl-uri-tn3270")  # AUTO-CPAN2Spack
-    provides("perl-uri-urn")  # AUTO-CPAN2Spack
-    provides("perl-uri-urn-isbn")  # AUTO-CPAN2Spack
-    provides("perl-uri-urn-oid")  # AUTO-CPAN2Spack
-    depends_on("perl@5.8.1:", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-extutils-makemaker", type=("build", "test"))  # AUTO-CPAN2Spack
-    depends_on("perl-test-needs", type=("build", "test"))  # AUTO-CPAN2Spack
-    depends_on("perl-scalar-util", type="run")  # AUTO-CPAN2Spack
-    depends_on("perl-data-dumper", type="run")  # AUTO-CPAN2Spack
+    provides("perl-uri-escape")
+    provides("perl-uri-heuristic")
+    provides("perl-uri-iri")
+    provides("perl-uri-queryparam")
+    provides("perl-uri-split")
+    provides("perl-uri-url")
+    provides("perl-uri-withbase")
+    provides("perl-uri-data")
+    provides("perl-uri-file")
+    provides("perl-uri-file-base")
+    provides("perl-uri-file-fat")
+    provides("perl-uri-file-mac")
+    provides("perl-uri-file-os2")
+    provides("perl-uri-file-qnx")
+    provides("perl-uri-file-unix")
+    provides("perl-uri-file-win32")
+    provides("perl-uri-ftp")
+    provides("perl-uri-gopher")
+    provides("perl-uri-http")
+    provides("perl-uri-https")
+    provides("perl-uri-ldap")
+    provides("perl-uri-ldapi")
+    provides("perl-uri-ldaps")
+    provides("perl-uri-mailto")
+    provides("perl-uri-mms")
+    provides("perl-uri-news")
+    provides("perl-uri-nntp")
+    provides("perl-uri-nntps")
+    provides("perl-uri-pop")
+    provides("perl-uri-rlogin")
+    provides("perl-uri-rsync")
+    provides("perl-uri-rtsp")
+    provides("perl-uri-rtspu")
+    provides("perl-uri-sftp")
+    provides("perl-uri-sip")
+    provides("perl-uri-sips")
+    provides("perl-uri-snews")
+    provides("perl-uri-ssh")
+    provides("perl-uri-telnet")
+    provides("perl-uri-tn3270")
+    provides("perl-uri-urn")
+    provides("perl-uri-urn-isbn")
+    provides("perl-uri-urn-oid")
+    depends_on("perl@5.8.1:", type="run")
+    depends_on("perl-extutils-makemaker", type=("build", "test"))
+    depends_on("perl-test-needs", type=("build", "test"))
+    depends_on("perl-scalar-util", type="run")
+    depends_on("perl-data-dumper", type="run")

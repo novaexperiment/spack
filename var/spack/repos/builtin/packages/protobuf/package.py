@@ -1,4 +1,4 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
+# Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
 # Spack Project Developers. See the top-level COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
@@ -12,8 +12,12 @@ class Protobuf(CMakePackage):
 
     homepage = "https://developers.google.com/protocol-buffers"
     url = "https://github.com/protocolbuffers/protobuf/archive/v3.18.0.tar.gz"
+
     maintainers("hyoklee")
 
+    license("BSD-3-Clause")
+
+    version("3.25.3", sha256="da82be8acc5347c7918ef806ebbb621b24988f7e1a19b32cd7fc73bc29b59186")
     version("3.25.1", sha256="1a2affa2fbad568b9895b72e3c7cb1f72a14bf2501fba056c724dc68c249cd0f")
     version("3.25.0", sha256="540200ef1bb101cf3f86f257f7947035313e4e485eea1f7eed9bc99dd0e2cb68")
     version("3.24.3", sha256="2c23dee0bdbc36bd43ee457083f8f5560265d0815cc1c56033de3932843262fe")
@@ -120,7 +124,7 @@ class Protobuf(CMakePackage):
     # fix build on Centos 8, see also https://github.com/protocolbuffers/protobuf/issues/5144
     patch(
         "https://github.com/protocolbuffers/protobuf/pull/11032/commits/3039f932aaf212bcf2f14a3f2fd00dbfb881e46b.patch?full_index=1",
-        when="@:3.21",
+        when="@3.4:3.21",
         sha256="cefc4bf4aadf9ca33a336b2aa6d0d82006b6563e85122ae8cfb70345f85321dd",
     )
 
