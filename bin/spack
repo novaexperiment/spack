@@ -1,4 +1,4 @@
-#!/usr/bin/python3 -I
+#!/bin/sh
 # -*- python -*-
 #
 # Copyright 2013-2024 Lawrence Livermore National Security, LLC and other
