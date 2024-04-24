@@ -51,10 +51,10 @@ jobs:
           on_develop: false
 
     steps:
-    - uses: actions/checkout@1d96c772d19495a3b5c517cd2bc0cb401ea0529f # @v2
+    - uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633
       with:
         fetch-depth: 0
-    - uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d # @v2
+    - uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d
       with:
         python-version: ${{ matrix.python-version }}
     - name: Install System packages
@@ -94,14 +94,16 @@ jobs:
     - uses: codecov/codecov-action@84508663e988701840491b86de86b666e8a86bed
       with:
         flags: unittests,linux,${{ matrix.concretizer }}
+        token: ${{ secrets.CODECOV_TOKEN }}
+        verbose: true
   # Test shell integration
   shell:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@1d96c772d19495a3b5c517cd2bc0cb401ea0529f # @v2
+    - uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633
       with:
         fetch-depth: 0
-    - uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d # @v2
+    - uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d
       with:
         python-version: '3.11'
     - name: Install System packages
@@ -125,6 +127,8 @@ jobs:
     - uses: codecov/codecov-action@84508663e988701840491b86de86b666e8a86bed
       with:
         flags: shelltests,linux
+        token: ${{ secrets.CODECOV_TOKEN }}
+        verbose: true
 
   # Test RHEL8 UBI with platform Python. This job is run
   # only on PRs modifying core Spack
@@ -137,7 +141,7 @@ jobs:
           dnf install -y \
               bzip2 curl file gcc-c++ gcc gcc-gfortran git gnupg2 gzip \
               make patch tcl unzip which xz
-    - uses: actions/checkout@1d96c772d19495a3b5c517cd2bc0cb401ea0529f # @v2
+    - uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633
     - name: Setup repo and non-root user
       run: |
           git --version
@@ -156,10 +160,10 @@ jobs:
   clingo-cffi:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@1d96c772d19495a3b5c517cd2bc0cb401ea0529f # @v2
+    - uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633
       with:
         fetch-depth: 0
-    - uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d # @v2
+    - uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d
       with:
         python-version: '3.11'
     - name: Install System packages
@@ -181,20 +185,23 @@ jobs:
           SPACK_TEST_SOLVER: clingo
       run: |
           share/spack/qa/run-unit-tests
-    - uses: codecov/codecov-action@84508663e988701840491b86de86b666e8a86bed # @v2.1.0
+    - uses: codecov/codecov-action@84508663e988701840491b86de86b666e8a86bed
       with:
         flags: unittests,linux,clingo
+        token: ${{ secrets.CODECOV_TOKEN }}
+        verbose: true
   # Run unit tests on MacOS
   macos:
-    runs-on: macos-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
+        os: [macos-latest, macos-14]
         python-version: ["3.11"]
     steps:
-    - uses: actions/checkout@1d96c772d19495a3b5c517cd2bc0cb401ea0529f # @v2
+    - uses: actions/checkout@9bb56186c3b09b4f86b1c65136769dd318469633
       with:
         fetch-depth: 0
-    - uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d # @v2
+    - uses: actions/setup-python@82c7e631bb3cdc910f68e0081d67478d79c6982d
       with:
         python-version: ${{ matrix.python-version }}
     - name: Install Python packages
@@ -219,3 +226,5 @@ jobs:
     - uses: codecov/codecov-action@84508663e988701840491b86de86b666e8a86bed
       with:
         flags: unittests,macos
+        token: ${{ secrets.CODECOV_TOKEN }}
+        verbose: true
