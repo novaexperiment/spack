@@ -147,6 +147,11 @@ def setup_parser(subparser: argparse.ArgumentParser):
         help="when pushing to an OCI registry, tag an image containing all root specs and their "
         "runtime dependencies",
     )
+    push.add_argument(
+        "--private",
+        action="store_true",
+        help="for a private mirror, include non-redistributable packages",
+    )
     arguments.add_common_arguments(push, ["specs", "deptype_default_default_deptype", "jobs"])
     push.set_defaults(func=push_fn)
 
@@ -381,6 +386,25 @@ def _make_pool() -> MaybePool:
         return NoPool()
 
 
+def _skip_no_redistribute_for_public(specs):
+    remaining_specs = list()
+    removed_specs = list()
+    for spec in specs:
+        if spec.package.redistribute_binary:
+            remaining_specs.append(spec)
+        else:
+            removed_specs.append(spec)
+    if removed_specs:
+        colified_output = tty.colify.colified(list(s.name for s in removed_specs), indent=4)
+        tty.debug(
+            "The following specs will not be added to the binary cache"
+            " because they cannot be redistributed:\n"
+            f"{colified_output}\n"
+            "You can use `--private` to include them."
+        )
+    return remaining_specs
+
+
 def push_fn(args):
     """create a binary package and push it to a mirror"""
     if args.spec_file:
@@ -432,6 +456,8 @@ def push_fn(args):
         dependencies="dependencies" in args.things_to_install,
         deptype=args.deptype,
     )
+    if not args.private:
+        specs = _skip_no_redistribute_for_public(specs)
 
     # When pushing multiple specs, print the url once ahead of time, as well as how
     # many specs are being pushed.
@@ -1211,14 +1237,18 @@ def update_index(mirror: spack.mirror.Mirror, update_keys=False):
             url, bindist.build_cache_relative_path(), bindist.build_cache_keys_relative_path()
         )
 
-        bindist.generate_key_index(keys_url)
+        try:
+            bindist.generate_key_index(keys_url)
+        except bindist.CannotListKeys as e:
+            # Do not error out if listing keys went wrong. This usually means that the _gpg path
+            # does not exist. TODO: distinguish between this and other errors.
+            tty.warn(f"did not update the key index: {e}")
 
 
 def update_index_fn(args):
     """update a buildcache index"""
-    update_index(args.mirror, update_keys=args.keys)
+    return update_index(args.mirror, update_keys=args.keys)
 
 
 def buildcache(parser, args):
-    if args.func:
-        args.func(args)
+    return args.func(args)
