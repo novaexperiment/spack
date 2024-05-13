@@ -1322,10 +1322,10 @@ class PackageBase(WindowsRPath, PackageViewMixin, RedistributionMixin, metaclass
                 deps.append(dep)
 
         if deps:
-            # we may not still need this, but just in case... mengel
+            # assert len(deps) == 1
             if len(deps) == 2:
                 assert repr(deps[0]) == repr(deps[1])
-                tty.debug("Duplicated extendee deps?! {0}".format(repr(deps[0])))
+                tty.debug("duplicated extendee deps?! {0}".format(repr(deps[0])))
             else:
                 assert len(deps) == 1
             return deps[0]

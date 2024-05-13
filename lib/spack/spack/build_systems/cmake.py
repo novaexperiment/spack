@@ -19,7 +19,6 @@ import spack.build_environment
 import spack.builder
 import spack.deptypes as dt
 import spack.package_base
-import spack.util.path
 from spack.directives import build_system, conflicts, depends_on, variant
 from spack.multimethod import when
 
