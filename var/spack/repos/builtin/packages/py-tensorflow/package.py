@@ -112,6 +112,15 @@ class PyTensorflow(Package, CudaPackage, ROCmPackage, PythonExtension):
         description="Build kernels into separate shared objects",
     )
 
+    variant(
+        "cxxstd",
+        default="17",
+        values=("17", "20", "23"),
+        multi=False,
+        sticky=True,
+        description="C++ standard",
+    )
+
     extends("python")
 
     # Python support based on wheel availability
@@ -733,6 +742,7 @@ class PyTensorflow(Package, CudaPackage, ROCmPackage, PythonExtension):
             "--config=opt",
             # Enable verbose output for failures
             "--verbose_failures",
+            "--cxxopt={0}".format(self.spec.variants["cxxstd"].value),
         ]
 
         if spec.satisfies("^bazel@:3.5"):
