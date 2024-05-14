@@ -115,9 +115,10 @@ class PyTensorflow(Package, CudaPackage, ROCmPackage, PythonExtension):
     variant(
         "cxxstd",
         default="17",
-        values=("14", "17", "20"),
+        values=("17", "20", "23"),
         multi=False,
-        description="Use the specified C++ standard when building.",
+        sticky=True,
+        description="C++ standard",
     )
 
     extends("python")
@@ -741,6 +742,7 @@ class PyTensorflow(Package, CudaPackage, ROCmPackage, PythonExtension):
             "--config=opt",
             # Enable verbose output for failures
             "--verbose_failures",
+            "--cxxopt={0}".format(self.spec.variants["cxxstd"].value),
         ]
 
         if spec.satisfies("^bazel@:3.5"):
