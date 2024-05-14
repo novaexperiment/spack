@@ -112,6 +112,14 @@ class PyTensorflow(Package, CudaPackage, ROCmPackage, PythonExtension):
         description="Build kernels into separate shared objects",
     )
 
+    variant(
+        "cxxstd",
+        default="17",
+        values=("14", "17", "20"),
+        multi=False,
+        description="Use the specified C++ standard when building.",
+    )
+
     extends("python")
 
     # Python support based on wheel availability
