@@ -1240,7 +1240,7 @@ class PackageBase(WindowsRPath, PackageViewMixin, RedistributionMixin, metaclass
         """Return the install test root directory."""
         tty.warn(
             "The 'pkg.install_test_root' property is deprecated with removal "
-            "expected v0.22. Use 'install_test_root(pkg)' instead."
+            "expected v0.23. Use 'install_test_root(pkg)' instead."
         )
         return install_test_root(self)
 
@@ -1322,10 +1322,10 @@ class PackageBase(WindowsRPath, PackageViewMixin, RedistributionMixin, metaclass
                 deps.append(dep)
 
         if deps:
-            # we may not still need this, but just in case... mengel
+            # assert len(deps) == 1
             if len(deps) == 2:
                 assert repr(deps[0]) == repr(deps[1])
-                tty.debug("Duplicated extendee deps?! {0}".format(repr(deps[0])))
+                tty.debug("duplicated extendee deps?! {0}".format(repr(deps[0])))
             else:
                 assert len(deps) == 1
             return deps[0]
@@ -1903,7 +1903,7 @@ class PackageBase(WindowsRPath, PackageViewMixin, RedistributionMixin, metaclass
         """
         msg = (
             "'pkg.cache_extra_test_sources(srcs) is deprecated with removal "
-            "expected in v0.22. Use 'cache_extra_test_sources(pkg, srcs)' "
+            "expected in v0.23. Use 'cache_extra_test_sources(pkg, srcs)' "
             "instead."
         )
         warnings.warn(msg)

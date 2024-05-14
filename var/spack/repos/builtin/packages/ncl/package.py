@@ -369,7 +369,7 @@ class Ncl(Package):
         with open(config_answers_filename, "r") as f:
             config_script(input=f)
 
-        if self.spec.satisfies("^hdf+external-xdr") and not self.spec["hdf"].satisfies("^libc"):
+        if self.spec.satisfies("^hdf+external-xdr ^libtirpc"):
             hdf4 = self.spec["hdf"]
             replace_str = hdf4["rpc"].libs.link_flags
 

@@ -102,14 +102,12 @@ module_config_properties = {
         "properties": {
             "tcl": {"type": "string"},
             "lmod": {"type": "string"},
-            "ups_table": {"type": "string"},
-            "ups_version": {"type": "string"},
         },
     },
     "enable": {
         "type": "array",
         "default": [],
-        "items": {"type": "string", "enum": ["tcl", "lmod", "ups_table", "ups_version"]},
+        "items": {"type": "string", "enum": ["tcl", "lmod"]},
     },
     "lmod": {
         "allOf": [
@@ -144,20 +142,6 @@ module_config_properties = {
             r"^[\w-]*": array_of_strings
         },
     },
-    "ups_table": {
-        "allOf": [
-            # Base configuration
-            module_type_configuration,
-            {},  # Specific UPS table file extensions
-        ]
-    },
-    "ups_version": {
-        "allOf": [
-            # Base configuration
-            module_type_configuration,
-            {},  # Specific UPS version file extensions
-        ]
-    },
 }
 
 
@@ -174,20 +158,6 @@ properties: Dict[str, Any] = {
                     # prefix-relative path to be inspected for existence
                     r"^[\w-]*": array_of_strings
                 },
-            },
-            "ups_table": {
-                "allOf": [
-                    # Base configuration
-                    module_type_configuration,
-                    {},  # Specific tcl extensions
-                ]
-            },
-            "ups_version": {
-                "allOf": [
-                    # Base configuration
-                    module_type_configuration,
-                    {},  # Specific tcl extensions
-                ]
             },
         },
         "patternProperties": {
