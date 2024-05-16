@@ -35,6 +35,13 @@ class Root(CMakePackage):
     # Development version (when more recent than production).
     version("develop", branch="master")
 
+    # Pre-release versions
+    version(
+        "6.32.00-rc1",
+        sha256="0a4f9870c8c13d8b3c3c1c59a3b8ff6cec5b58ad70f4b6a11ed0e7d6d69fe13f",
+        preferred=False,
+    )
+
     # Production version
     version("6.30.06", sha256="300db7ed1b678ed2fb9635ca675921a1945c7c2103da840033b493091f55700c")
     version("6.30.04", sha256="2b4180b698f39cc65d91084d833a884515b325bc5f673c8e39abe818b025d8cc")
