@@ -414,13 +414,6 @@ class PyTensorflow(Package, CudaPackage, ROCmPackage, PythonExtension):
 
     phases = ["configure", "build", "install"]
 
-    def patch(self):
-        filter_file(
-            '#include "absl',
-            '#include <cstdint>\n#include "absl',
-            "tensorflow/tsl/platform/stringpiece.h",
-        )
-
     # https://www.tensorflow.org/install/source
     def setup_build_environment(self, env):
         spec = self.spec
