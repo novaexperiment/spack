@@ -713,7 +713,7 @@ class Root(CMakePackage):
             options.append(define_from_variant("tmva-sofie"))
 
         if self.spec.satisfies("@:6.30"):
-            define_from_variant("minuit2", "minuit"),
+            options.append(define_from_variant("minuit2", "minuit"))
 
         # #################### Compiler options ####################
 
