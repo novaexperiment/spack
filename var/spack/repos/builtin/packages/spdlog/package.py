@@ -52,6 +52,13 @@ class Spdlog(CMakePackage):
     variant("shared", default=True, description="Build shared libraries (v1.4.0+)")
     variant("pic", default=True, description="Build pic-enabled static libraries")
 
+    variant(
+        "cxxstd",
+        default="11",
+        values=("11", "14", "17", "20"),
+        multi=False,
+        description="Use the specified C++ standard when building.",
+    )
     depends_on("cmake@3.2:", when="@:1.7.0", type="build")
     depends_on("cmake@3.10:", when="@1.8.0:", type="build")
     depends_on("cmake@3.11:", when="@1.13.0:", type="build")
@@ -74,6 +81,7 @@ class Spdlog(CMakePackage):
         if self.spec.version >= Version("1.4.0"):
             args.extend(
                 [
+                    self.define_from_variant("CMAKE_CXX_STANDARD", "cxxstd"),
                     self.define_from_variant("SPDLOG_BUILD_SHARED", "shared"),
                     self.define("SPDLOG_FMT_EXTERNAL", True),
                     self.define_from_variant("CMAKE_POSITION_INDEPENDENT_CODE", "pic"),
