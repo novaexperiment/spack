@@ -44,9 +44,6 @@ class Postgresql(AutotoolsPackage):
     version("9.5.3", sha256="7385c01dc58acba8d7ac4e6ad42782bd7c0b59272862a3a3d5fe378d4503a0b4")
     version("9.3.4", sha256="9ee819574dfc8798a448dc23a99510d2d8924c2f8b49f8228cd77e4efc8a6621")
 
-    depends_on("c", type="build")  # generated
-    depends_on("cxx", type="build")  # generated
-
     variant("client_only", default=False, description="Build and install client only.")
     variant("threadsafe", default=False, description="Build with thread safe.")
     variant(
@@ -61,6 +58,9 @@ class Postgresql(AutotoolsPackage):
     variant("tcl", default=False, description="Enable Tcl bindings.")
     variant("gssapi", default=False, description="Build with GSSAPI functionality.")
     variant("xml", default=False, description="Build with XML support.")
+
+    depends_on("c", type="build")
+    depends_on("cxx", when="~client_only", type="build")
 
     depends_on("readline", when="lineedit=readline")
     depends_on("libedit", when="lineedit=libedit")
