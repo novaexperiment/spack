@@ -59,6 +59,9 @@ class Postgresql(AutotoolsPackage):
     variant("gssapi", default=False, description="Build with GSSAPI functionality.")
     variant("xml", default=False, description="Build with XML support.")
 
+    depends_on("c", type="build")
+    depends_on("cxx", when="~client_only", type="build")
+
     depends_on("readline", when="lineedit=readline")
     depends_on("libedit", when="lineedit=libedit")
     depends_on("openssl")
