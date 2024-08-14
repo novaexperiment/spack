@@ -367,6 +367,10 @@ class Openssl(Package):  # Uses Fake Autotools, should subclass Package
         sha256="f74f15e8c8ff11aa3d5bb5f276d202ec18d7246e95f961db76054199c69c1ae3",
         deprecated=True,
     )
+ 
+    version("1.1.0", sha256="f5c69ff9ac1472c80b868efc1c1c0d8dcfc746d29ebe563de2365dd56dbd8c82")
+
+
 
     # On Cray DVS mounts, we can't make symlinks to /etc/ssl/openssl.cnf,
     # either due to a bug or because DVS is not intended to be POSIX compliant.
