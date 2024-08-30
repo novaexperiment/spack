@@ -16,6 +16,7 @@ class PyOracledb(PythonPackage):
 
     license("Apache-2.0")
 
+    version("2.4.1", sha256="bd5976bef0e466e0f9d1b9f6531fb5b8171dc8534717ccb04b26e680b6c7571d")
     version("1.2.2", sha256="dd9f63084e44642b484a46b2fcfb4fc921f39facf494a1bab00628fa6409f4fc")
 
     depends_on("py-setuptools@40.6.0:", type="build")
