@@ -21,6 +21,7 @@ class Geant4(CMakePackage):
     executables = ["^geant4-config$"]
 
     maintainers("drbenmorgan", "sethrj")
+    version("11.3.0", sha256="d9d71daff8890a7b5e0e33ea9a65fe6308ad6713000b43ba6705af77078e7ead")
     version(
         "11.3.0.beta",
         sha256="572ba1570ca3b5b6f2a28ccbffa459901f6a986b79da1ebfdbf2f6f3dc5e14bf",
